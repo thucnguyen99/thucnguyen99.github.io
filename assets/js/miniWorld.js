@@ -24,6 +24,10 @@ var Colors = {
 	whiteNemo:0xf2f2f2,
 	orangeNemo:0xF25D27,
 	blackNemo:0x000000,
+	yellowDori:0xF2E963,
+	darkDori:0x040740,
+	lightDori:0x032CA6,
+
 };
 
 
@@ -518,48 +522,83 @@ var AirPlane = function() {
 var Nemo = function() {
 	this.mesh = new THREE.Object3D();
 
+	const radiusNemo = 40.0;
+
 	// Materials used
 	var matWhite = new THREE.MeshPhongMaterial( {color:Colors.whiteNemo, shading:THREE.FlatShading} );
-	var matOrange = new THREE.MeshPhongMaterial( {color:Colors.orangeNemo, shading:THREE.FlatShading} );
-	var matBlack = new THREE.MeshPhongMaterial( {color:Colors.blackNemo, wireframe:true} );
-	matBlack.wireframeLineWidth = 10.0;
+	var matOrange = new THREE.MeshPhongMaterial( {color:Colors.orangeNemo, shading:THREE.FlatShading} )
 
-	const radiusNemo = 40.0;
 	//White shape
 	var whiteShapeHead = new THREE.ConeGeometry( radiusNemo, radiusNemo, 4, 1, true );
 	var whiteShapeTail = new THREE.ConeGeometry( radiusNemo, radiusNemo*2, 4, 1, true );
 	var whiteMeshHead = new THREE.Mesh( whiteShapeHead, matWhite );
 	var whiteMeshTail = new THREE.Mesh( whiteShapeTail, matWhite );
-	whiteMeshHead.rotation.x = Math.PI / 2;
-	//whiteMeshTail.rotation.z = 1.28;
-	whiteMeshHead.position.y = -radiusNemo/2;
+	whiteMeshHead.rotation.x = Math.PI;
+	whiteMeshHead.position.y = -radiusNemo;
 	whiteMeshTail.position.y =  radiusNemo/2;
-
 	this.mesh.add(whiteMeshHead);
 	this.mesh.add(whiteMeshTail);
 
-
+	// Orange shapes
+	var orangeShapeHead = new THREE.ConeGeometry( 2*(radiusNemo/3), 2*(radiusNemo/3), 4, 1, true );
+	var orangeMeshHead = new THREE.Mesh( orangeShapeHead, matOrange );
+	orangeMeshHead.rotation.x = Math.PI;
+	orangeMeshHead.position.y = -radiusNemo-radiusNemo*0.2;
+	this.mesh.add( orangeMeshHead );
 	var orangeShapeTail = new THREE.ConeGeometry( radiusNemo/2, radiusNemo, 3, 1 );
 	var orangeMeshTail = new THREE.Mesh( orangeShapeTail, matOrange );
-
 	orangeMeshTail.rotation.x = Math.PI;
 	orangeMeshTail.position.y = radiusNemo*1.7;
-
-	var blackMeshTail = orangeMeshTail.clone();
-	blackMeshTail.scale = 1.1;
-	blackMeshTail.material = matBlack;
-
 	this.mesh.add( orangeMeshTail );
-	this.mesh.add( blackMeshTail );
 
-	var orangeShapeFlipperFrontUp = new THREE.IcosahedronGeometry();
-	var orangeMeshFlipperFrontUp = new THREE.Mesh();
-
-	var orangeShapeFront = new THREE.TorusGeometry(radiusNemo);
+	var orangeShapeFront = new THREE.TorusGeometry(radiusNemo*0.9, radiusNemo*0.2);
 	var orangeMeshFront = new THREE.Mesh( orangeShapeFront, matOrange );
 	orangeMeshFront.position.y = -radiusNemo/2;
+	orangeMeshFront.rotation.x = Math.PI/2;
 	this.mesh.add( orangeMeshFront );
 
+	var orangeShapeFront = new THREE.TorusGeometry(radiusNemo/2, radiusNemo*0.2);
+	var orangeMeshFront = new THREE.Mesh( orangeShapeFront, matOrange );
+	orangeMeshFront.position.y = radiusNemo/2;
+	orangeMeshFront.rotation.x = Math.PI/2;
+	this.mesh.add( orangeMeshFront );
+
+}
+
+var Dori = function() {
+
+	this.mesh = new THREE.Object3D();
+
+	const radiusDori = 40.0;
+
+	// Materials used
+	var matDarkBlue = new THREE.MeshPhongMaterial( {color:Colors.darkDori, shading:THREE.FlatShading} );
+	var matlightBlue = new THREE.MeshPhongMaterial( {color:Colors.lightDori, shading:THREE.FlatShading} )
+	var matYellow = new THREE.MeshPhongMaterial( {color:Colors.yellowDori, shading:THREE.FlatShading} )
+
+
+	var yellowShapeTail = new THREE.ConeGeometry( radiusDori/2, radiusDori, 3, 1 );
+	var yellowMeshTail = new THREE.Mesh( yellowShapeTail, matYellow );
+	yellowMeshTail.rotation.x = Math.PI;
+	yellowMeshTail.position.y = radiusDori*1.7;
+	this.mesh.add( yellowMeshTail );
+
+}
+
+var NemoAndDori = function(){
+	this.mesh = new THREE.Object3D();
+
+	var nemo = new Nemo();
+	nemo.mesh.scale.set(.35,.35,.35);
+	nemo.mesh.position.set(-40,110,-250);
+	nemo.mesh.rotation.z = Math.PI/2;
+	this.mesh.add(nemo.mesh);
+
+	var dori = new Dori();
+	dori.mesh.scale.set(.5,.5,.5);
+	dori.mesh.position.set(-30,140,-220);
+	dori.mesh.rotation.z = Math.PI/2;
+	this.mesh.add(dori.mesh);
 }
 
 var Fox = function() {
@@ -762,8 +801,22 @@ function createNemo(){
 	nemo = new Nemo();
 	nemo.mesh.scale.set(.35,.35,.35);
 	nemo.mesh.position.set(-40,110,-250);
-	// airplane.mesh.rotation.z = Math.PI/15;
+	nemo.mesh.rotation.z = Math.PI/2;
 	scene.add(nemo.mesh);
+}
+
+function createDori(){ 
+	dori = new Dori();
+	dori.mesh.scale.set(.5,.5,.5);
+	dori.mesh.position.set(-30,160,-220);
+	dori.mesh.rotation.z = Math.PI/2;
+	scene.add(nemo.dori);
+}
+
+function createNemoAndDori()
+{
+	nemoAndDori = new NemoAndDori();
+	scene.add(nemoAndDori.mesh);
 }
 
 function createFox(){ 
@@ -792,19 +845,19 @@ function updatePlane() {
 	airplane.propeller.rotation.x += 0.3;
 }
 
-function updateNemo() {
+function updateNemoAndDori() {
 	var targetY = normalize(mousePos.y,-.75,.75, 50, 190);
 	var targetX = normalize(mousePos.x,-.75,.75,-100, -20);
 	
 	// Move the plane at each frame by adding a fraction of the remaining distance
-	nemo.mesh.position.y += (targetY-nemo.mesh.position.y)*0.1;
+	nemoAndDori.mesh.position.y += (targetY-nemoAndDori.mesh.position.y)*0.1;
 
-	nemo.mesh.position.x += (targetX-nemo.mesh.position.x)*0.1;
+	nemoAndDori.mesh.position.x += (targetX-nemoAndDori.mesh.position.x)*0.1;
 
 	// Rotate the plane proportionally to the remaining distance
-	nemo.mesh.rotation.z = (targetY-nemo.mesh.position.y)*0.0128;
-	nemo.mesh.rotation.x = (nemo.mesh.position.y-targetY)*0.0064;
-	nemo.mesh.rotation.y = (nemo.mesh.position.x-targetX)*0.0064;
+	nemoAndDori.mesh.rotation.z = (targetY-nemoAndDori.mesh.position.y)*0.0128;
+	nemoAndDori.mesh.rotation.x = (nemoAndDori.mesh.position.y-targetY)*0.0064;
+	nemoAndDori.mesh.rotation.y = (nemoAndDori.mesh.position.x-targetX)*0.0064;
 
 	//nemo.propeller.rotation.x += 0.3;
 }
@@ -827,7 +880,7 @@ function loop(){
   sky.mesh.rotation.z += .003;
   forest.mesh.rotation.z += .005;
   //updatePlane();
-  updateNemo();
+  updateNemoAndDori();
 
   renderer.render(scene, camera);
   requestAnimationFrame(loop);
@@ -844,7 +897,7 @@ function init(event) {
 	createScene();
 	createLights();
 	//createPlane();
-	createNemo();
+	createNemoAndDori();
 	createOrbit();
 	createSun();
 	createLand();
