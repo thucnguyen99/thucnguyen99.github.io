@@ -7,41 +7,7 @@ Version: 1.0
 License: https://themeforest.net/licenses/standard
 */
 
-//let theme = sessionStorage.getItem('theme');
-let theme = document.documentElement.getAttribute('data-theme');
-var Colors = {}
-if (theme === "dark") {
-	Colors = {
-		red:0x732821,
-		yellow:0xedeb27,
-		white:0xd8d0d1,
-		brown:0x59332e,
-		pink:0xF5986E,
-		brownDark:0x23190f,
-		blue:0x68c3c0,
-		green:0x458248,
-		purple:0x551A8B,
-		lightgreen:0x629265,
-		fog:0xf7d9aa,
-		ligth:0xffffff,
-	};
-} else if (theme === "light") {
-	Colors = {
-		red:0xf25346,
-		yellow:0xEDE90E,
-		white:0xC3C6D9,
-		brown:0x664630,
-		pink:0xFA6864,
-		brownDark:0x331A13,
-		blue:0x6399CF,
-		green:0x609949,
-		purple:0x8617A3,
-		lightgreen:0x879E62,
-		fog:0x87ABA9,
-		ligth:0x808080,
-	};
-}
-/*
+
 var Colors = {
 	red:0xf25346,
 	yellow:0xedeb27,
@@ -53,8 +19,13 @@ var Colors = {
 	green:0x458248,
 	purple:0x551A8B,
 	lightgreen:0x629265,
+	land:0x00B7C4,
+	sun:0xF2913D,
+	whiteNemo:0xf2f2f2,
+	orangeNemo:0xF25D27,
+	blackNemo:0x000000,
 };
-*/
+
 
 var scene, camera, fieldOfView, aspectRatio, nearPlane, farPlane, HEIGHT, WIDTH, renderer, container;
 
@@ -119,9 +90,7 @@ function handleWindowResize() {
 	camera.updateProjectionMatrix();
 }
 
-
 var hemispshereLight, shadowLight;
-
 function createLights(){
 	// Gradient coloured light - Sky, Ground, Intensity
 	hemisphereLight = new THREE.HemisphereLight(0xaaaaaa,0x000000, .9)
@@ -151,14 +120,13 @@ function createLights(){
 	scene.add(shadowLight);
 }	
 
-
 Land = function(){
 	var geom = new THREE.CylinderGeometry(600,600,1700,40,10);
 	//rotate on the x axis
 	geom.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
 	//create a material
 	var mat = new THREE.MeshPhongMaterial({
-		color: Colors.lightgreen,
+		color: Colors.land,
 		shading:THREE.FlatShading,
 	});
 
@@ -182,7 +150,7 @@ Sun = function(){
 
 	var sunGeom = new THREE.SphereGeometry( 400, 20, 10 );
 	var sunMat = new THREE.MeshPhongMaterial({
-		color: Colors.yellow,
+		color: Colors.sun,
 		shading:THREE.FlatShading,
 	});
 	var sun = new THREE.Mesh(sunGeom, sunMat);
@@ -337,9 +305,13 @@ Flower = function () {
 
 }
 
+Coral = function() {
+
+	this.mesh = new THREE.Object3D();
+
+}
+
 var petalColors = [Colors.red, Colors.yellow, Colors.blue];
-
-
 
 Forest = function(){
 
@@ -543,6 +515,53 @@ var AirPlane = function() {
 	this.mesh.add(suspension);
 };
 
+var Nemo = function() {
+	this.mesh = new THREE.Object3D();
+
+	// Materials used
+	var matWhite = new THREE.MeshPhongMaterial( {color:Colors.whiteNemo, shading:THREE.FlatShading} );
+	var matOrange = new THREE.MeshPhongMaterial( {color:Colors.orangeNemo, shading:THREE.FlatShading} );
+	var matBlack = new THREE.MeshPhongMaterial( {color:Colors.blackNemo, wireframe:true} );
+	matBlack.wireframeLineWidth = 10.0;
+
+	const radiusNemo = 40.0;
+	//White shape
+	var whiteShapeHead = new THREE.ConeGeometry( radiusNemo, radiusNemo, 4, 1, true );
+	var whiteShapeTail = new THREE.ConeGeometry( radiusNemo, radiusNemo*2, 4, 1, true );
+	var whiteMeshHead = new THREE.Mesh( whiteShapeHead, matWhite );
+	var whiteMeshTail = new THREE.Mesh( whiteShapeTail, matWhite );
+	whiteMeshHead.rotation.x = Math.PI / 2;
+	//whiteMeshTail.rotation.z = 1.28;
+	whiteMeshHead.position.y = -radiusNemo/2;
+	whiteMeshTail.position.y =  radiusNemo/2;
+
+	this.mesh.add(whiteMeshHead);
+	this.mesh.add(whiteMeshTail);
+
+
+	var orangeShapeTail = new THREE.ConeGeometry( radiusNemo/2, radiusNemo, 3, 1 );
+	var orangeMeshTail = new THREE.Mesh( orangeShapeTail, matOrange );
+
+	orangeMeshTail.rotation.x = Math.PI;
+	orangeMeshTail.position.y = radiusNemo*1.7;
+
+	var blackMeshTail = orangeMeshTail.clone();
+	blackMeshTail.scale = 1.1;
+	blackMeshTail.material = matBlack;
+
+	this.mesh.add( orangeMeshTail );
+	this.mesh.add( blackMeshTail );
+
+	var orangeShapeFlipperFrontUp = new THREE.IcosahedronGeometry();
+	var orangeMeshFlipperFrontUp = new THREE.Mesh();
+
+	var orangeShapeFront = new THREE.TorusGeometry(radiusNemo);
+	var orangeMeshFront = new THREE.Mesh( orangeShapeFront, matOrange );
+	orangeMeshFront.position.y = -radiusNemo/2;
+	this.mesh.add( orangeMeshFront );
+
+}
+
 var Fox = function() {
 	
 	this.mesh = new THREE.Object3D();
@@ -731,13 +750,20 @@ function createSun(){
 	scene.add(sun.mesh);
 }
 
-
 function createPlane(){ 
 	airplane = new AirPlane();
 	airplane.mesh.scale.set(.35,.35,.35);
 	airplane.mesh.position.set(-40,110,-250);
 	// airplane.mesh.rotation.z = Math.PI/15;
 	scene.add(airplane.mesh);
+}
+
+function createNemo(){ 
+	nemo = new Nemo();
+	nemo.mesh.scale.set(.35,.35,.35);
+	nemo.mesh.position.set(-40,110,-250);
+	// airplane.mesh.rotation.z = Math.PI/15;
+	scene.add(nemo.mesh);
 }
 
 function createFox(){ 
@@ -766,6 +792,23 @@ function updatePlane() {
 	airplane.propeller.rotation.x += 0.3;
 }
 
+function updateNemo() {
+	var targetY = normalize(mousePos.y,-.75,.75, 50, 190);
+	var targetX = normalize(mousePos.x,-.75,.75,-100, -20);
+	
+	// Move the plane at each frame by adding a fraction of the remaining distance
+	nemo.mesh.position.y += (targetY-nemo.mesh.position.y)*0.1;
+
+	nemo.mesh.position.x += (targetX-nemo.mesh.position.x)*0.1;
+
+	// Rotate the plane proportionally to the remaining distance
+	nemo.mesh.rotation.z = (targetY-nemo.mesh.position.y)*0.0128;
+	nemo.mesh.rotation.x = (nemo.mesh.position.y-targetY)*0.0064;
+	nemo.mesh.rotation.y = (nemo.mesh.position.x-targetX)*0.0064;
+
+	//nemo.propeller.rotation.x += 0.3;
+}
+
 function normalize(v,vmin,vmax,tmin, tmax){
 
 	var nv = Math.max(Math.min(v,vmax), vmin);
@@ -783,7 +826,8 @@ function loop(){
   orbit.mesh.rotation.z += .001;
   sky.mesh.rotation.z += .003;
   forest.mesh.rotation.z += .005;
-  updatePlane();
+  //updatePlane();
+  updateNemo();
 
   renderer.render(scene, camera);
   requestAnimationFrame(loop);
@@ -799,7 +843,8 @@ function handleMouseMove (event) {
 function init(event) {
 	createScene();
 	createLights();
-	createPlane();
+	//createPlane();
+	createNemo();
 	createOrbit();
 	createSun();
 	createLand();
