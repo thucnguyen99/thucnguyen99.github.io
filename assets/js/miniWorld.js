@@ -540,7 +540,7 @@ var Nemo = function() {
 	this.mesh.add(whiteMeshTail);
 
 	// Orange shapes
-	var orangeShapeHead = new THREE.ConeGeometry( 2*(radiusNemo/3), 2*(radiusNemo/3), 4, 1, true );
+	var orangeShapeHead = new THREE.ConeGeometry( 2*(radiusNemo/3), radiusNemo*0.75, 4, 1, true );
 	var orangeMeshHead = new THREE.Mesh( orangeShapeHead, matOrange );
 	orangeMeshHead.rotation.x = Math.PI;
 	orangeMeshHead.position.y = -radiusNemo-radiusNemo*0.2;
@@ -551,10 +551,10 @@ var Nemo = function() {
 	orangeMeshTail.position.y = radiusNemo*1.7;
 	this.mesh.add( orangeMeshTail );
 
-	var orangeShapeFront = new THREE.TorusGeometry(radiusNemo*0.9, radiusNemo*0.2);
+	var orangeShapeFront = new THREE.TorusGeometry(radiusNemo*0.8, radiusNemo*0.2);
 	var orangeMeshFront = new THREE.Mesh( orangeShapeFront, matOrange );
 	orangeMeshFront.position.y = -radiusNemo/2;
-	orangeMeshFront.rotation.x = Math.PI/2;
+	orangeMeshFront.rotation.x = Math.PI*0.4;
 	this.mesh.add( orangeMeshFront );
 
 	var orangeShapeFront = new THREE.TorusGeometry(radiusNemo/2, radiusNemo*0.2);
@@ -576,12 +576,25 @@ var Dori = function() {
 	var matlightBlue = new THREE.MeshPhongMaterial( {color:Colors.lightDori, shading:THREE.FlatShading} )
 	var matYellow = new THREE.MeshPhongMaterial( {color:Colors.yellowDori, shading:THREE.FlatShading} )
 
-
+	// Tail
 	var yellowShapeTail = new THREE.ConeGeometry( radiusDori/2, radiusDori, 3, 1 );
 	var yellowMeshTail = new THREE.Mesh( yellowShapeTail, matYellow );
 	yellowMeshTail.rotation.x = Math.PI;
 	yellowMeshTail.position.y = radiusDori*1.7;
 	this.mesh.add( yellowMeshTail );
+
+	// Dark dori
+	var darkShapeBody = new THREE.ConeGeometry( radiusDori, radiusDori*1.5, 3, 1, true );
+	var darkMeshBody = new THREE.Mesh( darkShapeBody, matDarkBlue );
+	//darkMeshBody.rotation.x = -Math.PI/2;
+	//darkMeshBody.rotation.y = Math.PI/4;
+	darkMeshBody.position.z = radiusDori/2;
+	this.mesh.add(darkMeshBody);
+
+	// Light dori
+	var lightShapeBody = new THREE.ConeGeometry( radiusDori, radiusDori*1.5, 3, 1 );
+	var lightMeshBody = new THREE.Mesh( lightShapeBody, matDarkBlue );
+	//this.mesh.add(lightMeshBody);
 
 }
 
@@ -810,7 +823,7 @@ function createDori(){
 	dori.mesh.scale.set(.5,.5,.5);
 	dori.mesh.position.set(-30,160,-220);
 	dori.mesh.rotation.z = Math.PI/2;
-	scene.add(nemo.dori);
+	scene.add(dori.mesh);
 }
 
 function createNemoAndDori()
@@ -843,6 +856,40 @@ function updatePlane() {
 	airplane.mesh.rotation.y = (airplane.mesh.position.x-targetX)*0.0064;
 
 	airplane.propeller.rotation.x += 0.3;
+}
+
+function updateNemo() {
+	var targetY = normalize(mousePos.y,-.75,.75, 50, 190);
+	var targetX = normalize(mousePos.x,-.75,.75,-100, -20);
+	
+	// Move the plane at each frame by adding a fraction of the remaining distance
+	nemo.mesh.position.y += (targetY-nemo.mesh.position.y)*0.1;
+
+	nemo.mesh.position.x += (targetX-nemo.mesh.position.x)*0.1;
+
+	// Rotate the plane proportionally to the remaining distance
+	//nemo.mesh.rotation.z = (targetY-nemo.mesh.position.y)*0.0128;
+	nemo.mesh.rotation.x = (nemo.mesh.position.y-targetY)*0.0064;
+	nemo.mesh.rotation.y = (nemo.mesh.position.x-targetX)*0.0064;
+
+	//nemo.propeller.rotation.x += 0.3;
+}
+
+function updateDori() {
+	var targetY = normalize(mousePos.y,-.75,.75, 50, 190);
+	var targetX = normalize(mousePos.x,-.75,.75,-100, -20);
+	
+	// Move the plane at each frame by adding a fraction of the remaining distance
+	dori.mesh.position.y += (targetY-dori.mesh.position.y)*0.1;
+
+	dori.mesh.position.x += (targetX-dori.mesh.position.x)*0.1;
+
+	// Rotate the plane proportionally to the remaining distance
+	//dori.mesh.rotation.z = (targetY-dori.mesh.position.y)*0.0128;
+	dori.mesh.rotation.x = (dori.mesh.position.y-targetY)*0.0064;
+	dori.mesh.rotation.y = (dori.mesh.position.x-targetX)*0.0064;
+
+	//nemo.propeller.rotation.x += 0.3;
 }
 
 function updateNemoAndDori() {
@@ -880,7 +927,9 @@ function loop(){
   sky.mesh.rotation.z += .003;
   forest.mesh.rotation.z += .005;
   //updatePlane();
-  updateNemoAndDori();
+  //updateNemoAndDori();
+  updateNemo();
+  updateDori();
 
   renderer.render(scene, camera);
   requestAnimationFrame(loop);
@@ -897,7 +946,9 @@ function init(event) {
 	createScene();
 	createLights();
 	//createPlane();
-	createNemoAndDori();
+	createNemo();
+	createDori();
+	//createNemoAndDori();
 	createOrbit();
 	createSun();
 	createLand();
