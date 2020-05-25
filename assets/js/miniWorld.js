@@ -594,7 +594,8 @@ var Dori = function() {
 	// Light dori
 	var lightShapeBody = new THREE.ConeGeometry( radiusDori, radiusDori*1.5, 3, 1 );
 	var lightMeshBody = new THREE.Mesh( lightShapeBody, matDarkBlue );
-	//this.mesh.add(lightMeshBody);
+	darkMeshBody.position.z = -radiusDori/2;
+	this.mesh.add(lightMeshBody);
 
 }
 
