@@ -27,6 +27,11 @@ var Colors = {
 	yellowDori:0xF2E963,
 	darkDori:0x040740,
 	lightDori:0x032CA6,
+	rock1:0x6986BF,
+	rock2:0x111A26,
+	rock3:0x2E4159,
+	rock4:0x4A678C,
+	rock5:0x8191A6,
 
 };
 
@@ -309,10 +314,45 @@ Flower = function () {
 
 }
 
+
+
+Seaweed = function() {
+	this.mesh = new THREE.Object3D();
+}
+
 Coral = function() {
+	this.mesh = new THREE.Object3D();
+
+
+}
+
+
+var rockColors = [Colors.rock1, Colors.rock2, Colors.rock3, Colors.rock4, Colors.rock5];
+Rock = function() {
 
 	this.mesh = new THREE.Object3D();
 
+	var rockColor = rockColors [Math.floor(Math.random()*5)];
+	var matRock = new THREE.MeshPhongMaterial( { color:rockColor, shading:THREE.FlatShading});
+
+	var rockShape = new THREE.DodecahedronGeometry(20, 0);
+
+	var nBlocs = 3+Math.floor(Math.random()*3);
+
+	for (var i=0; i<nBlocs; i++ ){
+		//Clone mesh geometry
+		var rockMesh = new THREE.Mesh(rockShape, matRock);
+		//Randomly position each cube
+		rockMesh.position.x = i*15;
+		rockMesh.position.z = Math.random()*10;
+		rockMesh.rotation.z = Math.random()*Math.PI*2;
+		rockMesh.rotation.y = Math.random()*Math.PI*2;
+
+		//Randomly scale the cubes
+		var s = .1 + Math.random()*.9;
+		rockMesh.scale.set(s,s,s);
+		this.mesh.add(rockMesh);
+	}
 }
 
 var petalColors = [Colors.red, Colors.yellow, Colors.blue];
@@ -379,6 +419,98 @@ Forest = function(){
 		f.mesh.scale.set(s,s,s);
 
 		this.mesh.add(f.mesh);
+	}
+
+}
+
+Seabed = function(){
+
+	this.mesh = new THREE.Object3D();
+
+	// Number of Trees
+	this.nTrees = 300;
+
+	// Space the consistenly
+	var stepAngle = Math.PI*2 / this.nTrees;
+
+	// Create the Trees
+
+	for(var i=0; i<this.nTrees; i++){
+	
+		var t = new Tree();
+
+		//set rotation and position using trigonometry
+		var a = stepAngle*i;
+		// this is the distance between the center of the axis and the tree itself
+		var h = 605;
+		t.mesh.position.y = Math.sin(a)*h;
+		t.mesh.position.x = Math.cos(a)*h;		
+
+		// rotate the tree according to its position
+		t.mesh.rotation.z = a + (Math.PI/2)*3;
+
+		//Andreas Trigo funtime
+		//t.mesh.rotation.z = Math.atan2(t.mesh.position.y, t.mesh.position.x)-Math.PI/2;
+
+		// random depth for the tree on the z-axis
+		t.mesh.position.z = 0-Math.random()*600;
+
+		// random scale for each tree
+		var s = .3+Math.random()*.75;
+		t.mesh.scale.set(s,s,s);
+
+		this.mesh.add(t.mesh);
+	}
+
+	// Number of Trees
+	this.nFlowers = 350;
+
+	var stepAngle = Math.PI*2 / this.nFlowers;
+
+
+	for(var i=0; i<this.nFlowers; i++){	
+
+		var f = new Flower();
+		var a = stepAngle*i;
+
+		var h = 605;
+		f.mesh.position.y = Math.sin(a)*h;
+		f.mesh.position.x = Math.cos(a)*h;		
+
+		f.mesh.rotation.z = a + (Math.PI/2)*3;
+
+		f.mesh.position.z = 0-Math.random()*600;
+
+		var s = .1+Math.random()*.3;
+		f.mesh.scale.set(s,s,s);
+
+		this.mesh.add(f.mesh);
+	}
+
+	// Number of Rocks
+	this.nRocks = 150;
+
+	var stepAngle = Math.PI*2 / this.nRocks;
+
+	for( var i=0; i<this.nRocks; i++ ){	
+
+		var r = new Rock();
+		var a = stepAngle*i;
+
+		var h = 605;
+		r.mesh.position.y = Math.sin(a)*h;
+		r.mesh.position.x = Math.cos(a)*h;		
+
+		r.mesh.rotation.z = a + (Math.PI/2)*3;
+
+		r.mesh.position.z = 0 - Math.random()*600;
+
+		var sx = .5+Math.random();
+		var sy = .5+Math.random();
+		var sz = .5+Math.random();
+		r.mesh.scale.set( sx, sy, sz );
+
+		this.mesh.add(r.mesh);
 	}
 
 }
@@ -522,7 +654,7 @@ var AirPlane = function() {
 var Nemo = function() {
 	this.mesh = new THREE.Object3D();
 
-	const radiusNemo = 40.0;
+	const radiusNemo = 25.0;
 
 	// Materials used
 	var matWhite = new THREE.MeshPhongMaterial( {color:Colors.whiteNemo, shading:THREE.FlatShading} );
@@ -540,7 +672,7 @@ var Nemo = function() {
 	this.mesh.add(whiteMeshTail);
 
 	// Orange shapes
-	var orangeShapeHead = new THREE.ConeGeometry( 2*(radiusNemo/3), radiusNemo*0.75, 4, 1, true );
+	var orangeShapeHead = new THREE.ConeGeometry( 2*(radiusNemo/3), radiusNemo*0.5, 4, 1, true );
 	var orangeMeshHead = new THREE.Mesh( orangeShapeHead, matOrange );
 	orangeMeshHead.rotation.x = Math.PI;
 	orangeMeshHead.position.y = -radiusNemo-radiusNemo*0.2;
@@ -580,22 +712,29 @@ var Dori = function() {
 	var yellowShapeTail = new THREE.ConeGeometry( radiusDori/2, radiusDori, 3, 1 );
 	var yellowMeshTail = new THREE.Mesh( yellowShapeTail, matYellow );
 	yellowMeshTail.rotation.x = Math.PI;
-	yellowMeshTail.position.y = radiusDori*1.7;
+	yellowMeshTail.position.y = radiusDori*1.2;
 	this.mesh.add( yellowMeshTail );
 
 	// Dark dori
-	var darkShapeBody = new THREE.ConeGeometry( radiusDori, radiusDori*1.5, 3, 1, true );
+	var darkShapeBody = new THREE.ConeGeometry( radiusDori, radiusDori*1.5, 2, 1, true, 0, Math.PI );
 	var darkMeshBody = new THREE.Mesh( darkShapeBody, matDarkBlue );
 	//darkMeshBody.rotation.x = -Math.PI/2;
-	//darkMeshBody.rotation.y = Math.PI/4;
-	darkMeshBody.position.z = radiusDori/2;
+	//darkMeshBody.rotation.y = -Math.PI/2;
+	//darkMeshBody.position.x = radiusDori/4;
 	this.mesh.add(darkMeshBody);
 
 	// Light dori
-	var lightShapeBody = new THREE.ConeGeometry( radiusDori, radiusDori*1.5, 3, 1 );
-	var lightMeshBody = new THREE.Mesh( lightShapeBody, matDarkBlue );
-	darkMeshBody.position.z = -radiusDori/2;
+	var lightShapeBody = new THREE.ConeGeometry( radiusDori, radiusDori*1.5, 2, 1, true, 0, Math.PI );
+	var lightMeshBody = new THREE.Mesh( lightShapeBody, matlightBlue );
+	lightMeshBody.rotation.y = Math.PI;
 	this.mesh.add(lightMeshBody);
+
+	var lightShapeHead = new THREE.ConeGeometry( radiusDori, radiusDori*0.75, 4, 1, true );
+	var lightMeshHead = new THREE.Mesh( lightShapeHead, matlightBlue );
+	lightMeshHead.position.y = -radiusDori*1.1;
+	lightMeshHead.rotation.x = Math.PI;
+	lightMeshHead.rotation.y = Math.PI;
+	this.mesh.add(lightMeshHead);
 
 }
 
@@ -796,6 +935,12 @@ function createForest(){
   scene.add(forest.mesh);
 }
 
+function createSeabed(){
+	seabed = new Seabed();
+	seabed.mesh.position.y = offSet;
+	scene.add(seabed.mesh);
+  }
+
 function createSun(){ 
 	sun = new Sun();
 	sun.mesh.scale.set(1,1,.3);
@@ -822,7 +967,7 @@ function createNemo(){
 function createDori(){ 
 	dori = new Dori();
 	dori.mesh.scale.set(.5,.5,.5);
-	dori.mesh.position.set(-30,160,-220);
+	dori.mesh.position.set(-30,200,-280);
 	dori.mesh.rotation.z = Math.PI/2;
 	scene.add(dori.mesh);
 }
@@ -869,7 +1014,7 @@ function updateNemo() {
 	nemo.mesh.position.x += (targetX-nemo.mesh.position.x)*0.1;
 
 	// Rotate the plane proportionally to the remaining distance
-	//nemo.mesh.rotation.z = (targetY-nemo.mesh.position.y)*0.0128;
+	nemo.mesh.rotation.z = Math.PI/2 + (targetY-nemo.mesh.position.y)*0.0128;
 	nemo.mesh.rotation.x = (nemo.mesh.position.y-targetY)*0.0064;
 	nemo.mesh.rotation.y = (nemo.mesh.position.x-targetX)*0.0064;
 
@@ -877,7 +1022,7 @@ function updateNemo() {
 }
 
 function updateDori() {
-	var targetY = normalize(mousePos.y,-.75,.75, 50, 190);
+	var targetY = normalize(mousePos.y,-.75,.75, 80, 220);
 	var targetX = normalize(mousePos.x,-.75,.75,-100, -20);
 	
 	// Move the plane at each frame by adding a fraction of the remaining distance
@@ -886,7 +1031,7 @@ function updateDori() {
 	dori.mesh.position.x += (targetX-dori.mesh.position.x)*0.1;
 
 	// Rotate the plane proportionally to the remaining distance
-	//dori.mesh.rotation.z = (targetY-dori.mesh.position.y)*0.0128;
+	dori.mesh.rotation.z = Math.PI/2 + (targetY-dori.mesh.position.y)*0.0128;
 	dori.mesh.rotation.x = (dori.mesh.position.y-targetY)*0.0064;
 	dori.mesh.rotation.y = (dori.mesh.position.x-targetX)*0.0064;
 
@@ -926,7 +1071,8 @@ function loop(){
   land.mesh.rotation.z += .005;
   orbit.mesh.rotation.z += .001;
   sky.mesh.rotation.z += .003;
-  forest.mesh.rotation.z += .005;
+  //forest.mesh.rotation.z += .005;
+  seabed.mesh.rotation.z += .005;
   //updatePlane();
   //updateNemoAndDori();
   updateNemo();
@@ -953,7 +1099,8 @@ function init(event) {
 	createOrbit();
 	createSun();
 	createLand();
-	createForest();
+	//createForest();
+	createSeabed();
 	createSky();
 	//createFox();
 
