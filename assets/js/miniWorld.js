@@ -32,6 +32,16 @@ var Colors = {
 	rock3:0x2E4159,
 	rock4:0x4A678C,
 	rock5:0x8191A6,
+	seaweed1:0xB8ECD7,
+	seaweed2:0x083643,
+	seaweed3:0xB1E001,
+	seaweed4:0xCEF09D,
+	seaweed5:0x476C5E,
+	coral1:0x7F3731,
+	coral2:0xFFB5AE,
+	coral3:0xFF6F62,
+	coral4:0x7F5B57,
+	coral5:0xCC594E,
 
 };
 
@@ -315,15 +325,18 @@ Flower = function () {
 }
 
 
-
+var seaweedColors = [Colors.seaweed1, Colors.seaweed2, Colors.seaweed3, Colors.seaweed4, Colors.seaweed5];
 Seaweed = function() {
 	this.mesh = new THREE.Object3D();
+
+	var seaweedColor = seaweedColors [Math.floor(Math.random()*5)];
 }
 
+var coralColors = [Colors.coral1, Colors.coral2, Colors.coral3, Colors.coral4, Colors.coral5];
 Coral = function() {
 	this.mesh = new THREE.Object3D();
 
-
+	var coralColor = coralColors [Math.floor(Math.random()*5)];
 }
 
 

@@ -334,6 +334,21 @@ header {
     float:left;
 }
 
+/* Share page buttons */
+.share-page {
+    text-align: center;
+    background: var(--button-background-color);
+    color: #111;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin: 1.5 * 1 * 0;
+
+    .share-text{
+        color: var(--main-text-color);
+    }
+}
+.fb_iframe_widget span{vertical-align:inherit !important;}
+
 /* floating btn for buy me coffee */
 #bmc-wbtn{
     bottom: 40px !important;
