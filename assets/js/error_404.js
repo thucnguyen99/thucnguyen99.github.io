@@ -36,8 +36,8 @@ function stirPond(event) {
 function spawnFish(x, y) {
   // setup fish
   var $fish = $('<div class="fish"><div class="fish-bob"><div class="fish-direction"><div class="fish-body"></div></div></div></div>');
-  var colors = [1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 4];
-  $fish.addClass('fish-' + colors[Math.floor(getRandom(15))]);
+  var colors = [1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 5];
+  $fish.addClass('fish-' + colors[Math.floor(getRandom(colors.length))]);
   if (getRandom(2) < 1) {
     $fish.addClass('fish-flip');
   }

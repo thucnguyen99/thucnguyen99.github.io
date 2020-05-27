@@ -2,16 +2,7 @@
 
 * { user-select: none; }
 
-html { height: 100%; }
-
-body {
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-  background-color: #1d3f59;
-  backface-visibility: hidden;
-}
-
+/*
 h1 {
   position: absolute;
   top: calc(50% - 125px);
@@ -25,6 +16,12 @@ h1 {
   text-align: right;
   text-shadow: 0 0 80px rgba(255, 255, 255, 0.3);
 }
+*/
+
+
+.sea {
+    height: 85% !important;
+}
 
 .pond {
   position: absolute;
@@ -32,7 +29,7 @@ h1 {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: #204359;
 }
 
 .fish {
@@ -100,6 +97,8 @@ h1 {
 .fish-3 .fish-body::before { border-left-color: #806fad; }
 .fish-4 .fish-body { background-color: #d97eb6; }
 .fish-4 .fish-body::before { border-left-color: #d97eb6; }
+.fish-5 .fish-body { background-color: #23FFD4; }
+.fish-5 .fish-body::before { border-left-color: #23FFD4; }
 
 .fish-flip .fish-direction { transform: scaleX(-1); }
 
