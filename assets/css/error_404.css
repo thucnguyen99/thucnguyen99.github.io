@@ -18,18 +18,16 @@ h1 {
 }
 */
 
-
-.sea {
-    height: 85% !important;
-}
-
 .pond {
+  height: auto !important;
+  display:block;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   background-color: #204359;
+  margin-bottom: 80px;
 }
 
 .fish {

@@ -21,6 +21,7 @@ $(function() {
 function determinePondSize() {
   pondWidth = $pond.width();
   pondHeight = $pond.height();
+  pondHeight -= pondHeight * 0.05;
 }  
 
 function spawnStartingFish() {

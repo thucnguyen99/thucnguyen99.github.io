@@ -5,11 +5,13 @@ layout: compress
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: " en " }}">
 {%- include head.html -%}
-<body class="p-0">
-    <div class="col-auto p-0" style="height: 85%;">
-        <h2><span class="count">0</span> FISH</h2>
+<body class="d-flex flex-column h-100">
+    <!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+    <div class="container">
         <div class="pond"></div>
     </div>
+</main>
 <!--<script> var linkElement = document.createElement("link"); linkElement.rel = "stylesheet"; linkElement.href = "assets/css/miniWorld.css"; document.head.appendChild(linkElement); </script>-->
 {%- include footer.html -%}
 
