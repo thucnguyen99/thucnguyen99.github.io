@@ -1,21 +1,18 @@
 ---
-layout: compress
+layout: default
 ---
 
-<!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: " en " }}">
-{%- include head.html -%}
-<body class="d-flex flex-column h-100">
-    <!-- Begin page content -->
-<main role="main" class="flex-shrink-0">
-    <div class="container">
-        <div class="pond"></div>
+<div class="sea">
+    <div class="error_message">
+        <h1>404</h1>
+        <h2>It looks like you are missing in the sea.<br>
+            The page que you are looking for doesn't exists.</h2>
+        <a class="btn" href="{{site.url}}{{site.baseurl}}">
+            Go back to Homepage
+        </a>
     </div>
-</main>
-<!--<script> var linkElement = document.createElement("link"); linkElement.rel = "stylesheet"; linkElement.href = "assets/css/miniWorld.css"; document.head.appendChild(linkElement); </script>-->
-{%- include footer.html -%}
+    <div class="counter"><h1><span>0</span> FISHes</h1></div>
+    <div class="pond"></div>
+</div>
 
 <script src="/assets/js/error_404.js?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
-<script src="/assets/js/mode-switcher.js"></script>
-</body>
-</html>

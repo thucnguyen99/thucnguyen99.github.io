@@ -2,23 +2,62 @@
 
 * { user-select: none; }
 
-/*
-h1 {
+.error_message {
+  text-align: left;
+  position: relative;
+  margin: 20vh auto;
+  font-family: "Voltaire", Helvetica, Arial, sans-serif;
+  font-weight: 400
+}
+.error_message * {
+  pointer-events: visible;
+}
+.error_message h1 {
+  color: #333;
+  font-size: 4em;
+  position: relative;
+  font-weight: 400;
+  margin: 30px 0;
+}
+.error_message h2 {
+  color: #333;
+  font-weight: 500;
+  font-size: 1.7em;
+  margin-bottom: 50px;
+}
+.error_message .btn {
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  border: 2px solid #333;
+  padding: 12px 19px;
+  color: #333;
+  display: inline-block;
+  position: relative;
+  z-index: 3;
+}
+.error_message a:hover {
+  opacity: 0.8;
+}
+
+.counter h1{
   position: absolute;
   top: calc(50% - 125px);
   left: 0;
   right: 0;
   margin: 0;
   padding: 0 20px;
-  color: #1d3f59;
-  font: 250px/1 'Lilita One', sans-serif;
+  color: #1d3f59 !important;
+  font: 8rem/1 'Lilita One', sans-serif;
   white-space: nowrap;
   text-align: right;
   text-shadow: 0 0 80px rgba(255, 255, 255, 0.3);
 }
-*/
 
-.pond {
+.sea {
   height: auto !important;
   display:block;
   position: absolute;
@@ -28,6 +67,15 @@ h1 {
   right: 0;
   background-color: #204359;
   margin-bottom: 80px;
+}
+
+.pond {
+  display:block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .fish {

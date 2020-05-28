@@ -6,7 +6,7 @@ var $count, $pond, pondWidth, pondHeight;
 // on document ready
 $(function() {
   // setup
-  $count = $('.count');
+  $count = $('.counter span');
   $pond = $('.pond');
   determinePondSize();
   
