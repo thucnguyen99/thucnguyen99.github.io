@@ -1,0 +1,30 @@
+<!-- My own css files -->
+{% if layout.error %}
+<link rel="stylesheet" href="{{site.url}}{{site.baseurl}}/assets/css/error_404.css?v={{ site.time | date: '%Y%m%d%H%M%S' }}" />
+{% else %}
+<link rel="stylesheet" href="{{site.url}}{{site.baseurl}}/assets/css/main.css?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
+{% endif %}
+
+<link rel="stylesheet" href="{{site.url}}{{site.baseurl}}/assets/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="{{site.url}}{{site.baseurl}}/assets/bower_components/font-awesome/web-fonts-with-css/css/fontawesome-all.min.css"/>
+<link rel="stylesheet" href="{{site.url}}{{site.baseurl}}/assets/bower_components/icono/dist/icono.min.css"/>
+<link rel="stylesheet" href="{{site.url}}{{site.baseurl}}/assets/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{{site.url}}{{site.baseurl}}/assets/bower_components/font-awesome/web-fonts-with-css/css/fontawesome-all.min.css" />
+
+<!-- Fonts-->
+<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" href="{{site.url}}{{site.baseurl}}/assets/img/favicon.ico" type="image/gif" sizes="16x16">
+
+<!-- UNUSED FOR NOW -->
+<!--<link rel="stylesheet" href="/assets/bower_components/lightgallery/dist/css/lightgallery.min.css"/>-->
+<!--<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">-->
+<!--<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">-->
+<!--<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.0-beta.3/default/snipcart.css" />-->
+<!--<link rel="stylesheet" href="/assets/bower_components/icono/dist/icono.min.css"/>-->
+<!--<link href="{{ "/assets/css/main.css" | prepend: site.baseurl }}?{{ site.time | date: '%s%N' }}" rel="stylesheet">-->
+<!-- <link rel="stylesheet" href="/assets/css/custom-style.css" /> -->
+<!--<link rel="stylesheet" href="/assets/css/miniWorld.css?v={{ site.time | date: '%Y%m%d%H%M%S' }}" />-->
+<!--<link rel="stylesheet" href="/assets/css/main.css" />-->
+
