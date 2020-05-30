@@ -8,13 +8,15 @@ layout: compress
 <body class="d-flex flex-column h-100">
     {% if layout.header %}
         {%- include header.html -%}
-        {% endif %}
+    {% endif %}
         <main role="main" class="flex-shrink-0">
           <div class="content">
               {{ content }}
           </div>
         </main>
+    {% if layout.footer %}
         {%- include footer.html -%}
+    {% endif %}
      <script>
             var options = {
                 classname: 'my-class',
