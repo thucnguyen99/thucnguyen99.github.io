@@ -45,13 +45,13 @@
 
 .counter h1{
   position: absolute;
-  top: calc(50% - 125px);
+  top: calc(25% - 125px);
   left: 0;
   right: 0;
   margin: 0;
   padding: 0 20px;
   color: #1d3f59 !important;
-  font: 8rem/1 'Lilita One', sans-serif;
+  font: 6rem/1 'Lilita One', sans-serif;
   white-space: nowrap;
   text-align: right;
   text-shadow: 0 0 80px rgba(255, 255, 255, 0.3);
