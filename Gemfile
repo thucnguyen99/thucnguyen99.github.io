@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'jekyll', '~> 4.0.0'
+gem 'jekyll', '~> 4.0'
 gem 'bundler'
 gem 'kramdown'
 gem 'rack-jekyll'
@@ -24,6 +24,7 @@ group :jekyll_plugins do
     gem 'jekyll-algolia', '~> 1.6'
     gem 'jekyll-menus', '~> 0.6.1'
     gem 'jekyll-admin', '~> 0.9.0'
+    gem 'jekyll-multiple-languages-plugin', '~> 1.6.0'
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -6,6 +6,9 @@ description: >- # this means to ignore newlines until "baseurl:"
 url: "https://raquelfishes.github.io" # the base hostname & protocol for your site, e.g. https://example.github.io
 baseurl: "" # the subpath of your site, e.g. /blog
 
+languages: ["en", "es"]
+exclude_from_localizations: ["assets", "gallery", "_sass"]
+
 urls:
     - text: About Me
       url: /about
@@ -173,6 +176,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-algolia
   - jekyll-menus
+  - jekyll-multiple-languages-plugin
 
 
 # Exclude from processing.
