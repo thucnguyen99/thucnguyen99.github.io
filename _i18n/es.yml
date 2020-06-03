@@ -1,0 +1,14 @@
+global:
+  site_title: Raquel Fishes web
+  site_description: Sitio Web de Raquel Fishes
+langs:
+  english: Ingles
+  spanish: Español
+  en: en
+  es: es
+navbar:
+  about: Sobre mí
+  contact: Contacto
+titles:
+  about: Sobre mí
+  contact: Contacto

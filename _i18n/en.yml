@@ -1,0 +1,18 @@
+global:
+  english: English
+  spanish: Spanish
+  en: EN
+  es: ES
+  site_title: Raquel Fishes website
+  site_description: Raquel Fishes personal page
+langs:
+  english: English
+  spanish: Spanish
+  en: EN
+  es: ES
+navbar:
+  about: About me
+  contact: Contact
+titles:
+  about: About me
+  contact: Contact
