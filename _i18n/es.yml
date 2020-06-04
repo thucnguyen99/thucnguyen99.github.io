@@ -4,11 +4,15 @@ global:
 langs:
   english: Ingles
   spanish: Español
-  en: en
-  es: es
+  en: EN
+  es: ES
 navbar:
   about: Sobre mí
   contact: Contacto
 titles:
   about: Sobre mí
   contact: Contacto
+footer:
+  made1: Hecho con
+  made2: en
+  hosted: Alojado en 
