@@ -4,6 +4,8 @@
 ##  end
 ##end
 require "jekyll"
+require "tmpdir"
+require "rubygems"
 
 # Auto publish
 
