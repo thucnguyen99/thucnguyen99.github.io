@@ -5,27 +5,35 @@ footer: true
 ---
 
 <script>
-	$("#typed").typed({
-    strings: ["Typed.js is a JavaScript library.", "It tyops out", "It types out sentences.", "And then deletes them.", "Try it out!"],
-    typeSpeed: 30,
-    typeSpeed: 10,
-    backDelay: 5000,
-    startDelay: 200,
-    loop: True,
-    loopCount: False,
-    cursorChar: "|"
+  
+  var typed = new Typed('#typed', {
+    strings: ['First ^1000 sentence.', 'Second sentence.']
   });
 
-  $(".input-text").typed({
-    strings: ["Typed.js is a JavaScript library.", "It tyops out", "It types out sentences.", "And then deletes them.", "Try it out!"],
-    typeSpeed: 30,
-    typeSpeed: 10,
-    backDelay: 5000,
-    startDelay: 200,
-    loop: True,
-    loopCount: False,
-    cursorChar: "|"
-  });
+  console.log('your message');
+
+
+	//$("#typed").typed({
+  //  strings: ["Typed.js is a JavaScript library.", "It tyops out", "It types out sentences.", "And then deletes them.", "Try it out!"],
+  //  typeSpeed: 30,
+  //  typeSpeed: 10,
+  //  backDelay: 5000,
+  //  startDelay: 200,
+  //  loop: True,
+  //  loopCount: False,
+  //  cursorChar: "|"
+  //});
+//
+  //$(".input-text").typed({
+  //  strings: ["Typed.js is a JavaScript library.", "It tyops out", "It types out sentences.", "And then deletes them.", "Try it out!"],
+  //  typeSpeed: 30,
+  //  typeSpeed: 10,
+  //  backDelay: 5000,
+  //  startDelay: 200,
+  //  loop: True,
+  //  loopCount: False,
+  //  cursorChar: "|"
+  //});
 </script>
 
 
