@@ -4,43 +4,42 @@ header: true
 footer: true
 ---
 
+
+<!--
 <script>
-  
-  var typed = new Typed('#typed', {
-    strings: ['First ^1000 sentence.', 'Second sentence.']
-  });
-
-  console.log('your message');
-
-
-	//$("#typed").typed({
-  //  strings: ["Typed.js is a JavaScript library.", "It tyops out", "It types out sentences.", "And then deletes them.", "Try it out!"],
-  //  typeSpeed: 30,
-  //  typeSpeed: 10,
-  //  backDelay: 5000,
-  //  startDelay: 200,
-  //  loop: True,
-  //  loopCount: False,
-  //  cursorChar: "|"
-  //});
-//
-  //$(".input-text").typed({
-  //  strings: ["Typed.js is a JavaScript library.", "It tyops out", "It types out sentences.", "And then deletes them.", "Try it out!"],
-  //  typeSpeed: 30,
-  //  typeSpeed: 10,
-  //  backDelay: 5000,
-  //  startDelay: 200,
-  //  loop: True,
-  //  loopCount: False,
-  //  cursorChar: "|"
-  //});
+//  var typed = new Typed('.input-text', {
+//    strings: ['First ^1000 sentence.', 'Second sentence.']
+//  });
+//  console.log('your message');
+//	//$("#typed").typed({
+//  //  strings: ["Typed.js is a JavaScript library.", "It tyops out", "It types out sentences.", "And then deletes them.", "Try it out!"],
+//  //  typeSpeed: 30,
+//  //  typeSpeed: 10,
+//  //  backDelay: 5000,
+//  //  startDelay: 200,
+//  //  loop: True,
+//  //  loopCount: False,
+//  //  cursorChar: "|"
+//  //});
+////
+//  //$(".input-text").typed({
+//  //  strings: ["Typed.js is a JavaScript library.", "It tyops out", "It types out sentences.", "And then deletes them.", "Try it out!"],
+//  //  typeSpeed: 30,
+//  //  typeSpeed: 10,
+//  //  backDelay: 5000,
+//  //  startDelay: 200,
+//  //  loop: True,
+//  //  loopCount: False,
+//  //  cursorChar: "|"
+//  //});
 </script>
+-->
 
 
   <div class="jumbotron" style="text-align: center;">
     <img class="author-profile-img" src="/assets/img/profile.webp" />
     <p class="jumbotron-title"><span>{{site.author_name}}</span>{{site.author_lastname}}</p>
-    <p class="jumbotron-subtitle"><span id="typed" class="input-text">{{ content }}</span><!--<span class="head">I am a </span><span id="typewriteText">--></p>
+    <p class="jumbotron-subtitle"><span class="head">I am a </span><span  id="typedwrite" class="intro-typewrite">{{ content }}</span><!--<span class="head">I am a </span><span id="typed" id="typewriteText">--></p>
     {% if site.github_username %} {%- include github_follow_button.html -%} {%
     endif %} {%- include github_star_button.html -%}
   </div>
@@ -48,6 +47,23 @@ footer: true
     {%- include blockquote.html -%}
   </div>
   
+
+  <script>
+    var typed = new Typed('.intro-typewrite', {
+      strings: ["Typed.js is a JavaScript library.", "It tyops out", "It types out sentences.", "And then deletes them.", "Try it out!"],
+      typeSpeed: 50,
+      backSpeed: 10,
+      backDelay: 5000,
+      startDelay: 200,
+      shuffle: true,
+      loop: true,
+      loopCount: Infinity,
+      cursorChar: "|"
+    });
+  
+    console.log('your message');
+  </script>
+
 
   
 
