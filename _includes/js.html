@@ -23,8 +23,6 @@
         myQuotes.push("{{ line.text }}");
     {% endfor %}
 
-    console.log(myQuotes);
-
     var typed = new Typed('#{{ site.typewrite_htmlId }}', {
         strings: myQuotes,
         typeSpeed: {{ site.typewrite_typeSpeed }},
