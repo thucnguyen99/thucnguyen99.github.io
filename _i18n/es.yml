@@ -16,3 +16,13 @@ footer:
   made1: Hecho con
   made2: en
   hosted: Alojado en 
+
+typewrite_intro: Yo soy
+typewrite_lines:
+  - text: "Ingeniera especializada en Informática Gráfica"
+  - text: "Violinista"
+  - text: "Desarrolladora"
+  - text: "Deportista"
+  - text: "Fotógrafa"
+  - text: "Directora Técnica de proyectos 3D"
+  - text: "=)"

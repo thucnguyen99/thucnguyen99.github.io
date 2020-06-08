@@ -37,14 +37,18 @@ author_bio: Hi, my name is Raquel Peces. I am a Computer Graphics Engineer and a
 author_email: "raquelpm23@gmail.com"
 author_location: Madrid
 author_website_url: "http://raquelfishes.github.com"
-typewrite-text: I am a Computer Graphics Engineer and a Violinist =)
-typewrite-title: 
-  - Computer Graphics Engineer
-  - Violinist
-  - Developer
-  - Sporty
-  - Photographer
-  - 3D Technical Developer
+
+# Typewrite config
+typewrite_htmlId: input-typewrite
+typewrite_typeSpeed: 50
+typewrite_backSpeed: 10
+typewrite_backDelay: 5000
+typewrite_startDelay: 200
+typewrite_shuffle: true
+typewrite_loop: true
+typewrite_loopCount: Infinity
+typewrite_cursorChar: '|'
+
 
 author_work_experiences:
             - company_name: Next Limit
