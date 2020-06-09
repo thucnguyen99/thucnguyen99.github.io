@@ -8,6 +8,11 @@
 <link rel="stylesheet" href="{{site.url}}{{site.baseurl_root }}/assets/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="{{site.url}}{{site.baseurl_root }}/assets/bower_components/icono/dist/icono.min.css"/>
 
+{% if page.title == "About" %}
+<!-- FontAwesome stylesheed: rrss icons, only used in about page -->
+<link rel="stylesheet" href="{{site.url}}{{site.baseurl_root }}/assets/bower_components/font-awesome/web-fonts-with-css/css/fontawesome-all.min.css"/>
+{% endif %}
+
 <!-- Favicon -->
 <link rel="icon" href="{{site.url}}{{site.baseurl_root }}/assets/img/favicon.ico" type="image/gif" sizes="16x16">
 
@@ -15,7 +20,6 @@
 <!-- UNUSED FOR NOW -->
 <!-- Fonts-->
 <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{site.url}}{{site.baseurl_root }}/assets/bower_components/font-awesome/web-fonts-with-css/css/fontawesome-all.min.css"/>
 
 
 <link rel="stylesheet" href="/assets/bower_components/lightgallery/dist/css/lightgallery.min.css"/>

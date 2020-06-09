@@ -14,8 +14,8 @@
 <!-- Script language switcher -->
 <script src="{{ site.url }}{{site.baseurl_root}}/assets/js/mode-switcher.js"></script>
 
-<!-- Script typeWrite -->
 {% if page.title == Home %}
+<!-- Script typeWrite -->
 <script src="{{ site.url }}{{site.baseurl_root}}/assets/bower_components/typed.js/typed.min.js"></script>
 <script>
     var myQuotes =  new Array();
@@ -36,5 +36,25 @@
     });
 
 </script>
+{% endif %}
 
+{% if false %}
+<!-- Script debug jekyll variables -->
+<script>
+    var jekyll_site = JSON.parse(decodeURIComponent("{{ site | jsonify | uri_escape }}"));
+    var jekyll_page = JSON.parse(decodeURIComponent("{{ page | jsonify | uri_escape }}"));
+    var jekyll_layout = JSON.parse(decodeURIComponent("{{ layout | jsonify | uri_escape }}"));
+    var jekyll_content = JSON.parse(decodeURIComponent("{{ content | jsonify | uri_escape }}"));
+    var jekyll_paginator = JSON.parse(decodeURIComponent("{{ paginator  | jsonify | uri_escape }}"));
+    var pretty_site = JSON.stringify(jekyll_site, null, 4);
+    var pretty_page = JSON.stringify(jekyll_page, null, 4);
+    var pretty_layout = JSON.stringify(jekyll_layout, null, 4);
+    var pretty_content = JSON.stringify(jekyll_content, null, 4);
+    var pretty_paginator = JSON.stringify(jekyll_paginator, null, 4);
+    console.log(pretty_site);
+    console.log(pretty_page);
+    console.log(pretty_layout);
+    console.log(pretty_content);
+    console.log(pretty_paginator);
+</script>
 {% endif %}
