@@ -16,11 +16,8 @@ navbar:
 titles:
   about: About me
   contact: Contact
-footer:
-  made1: Made with
-  made2: in
-  power: Powered by
-  hosted: Hosted at 
+
+  
 
 typewrite_intro: I am a
 typewrite_lines:

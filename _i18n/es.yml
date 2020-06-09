@@ -12,10 +12,8 @@ navbar:
 titles:
   about: Sobre mí
   contact: Contacto
-footer:
-  made1: Hecho con
-  made2: en
-  hosted: Alojado en 
+
+  
 
 typewrite_intro: Yo soy
 typewrite_lines:
