@@ -1,3 +1,5 @@
+Sync at 09/06/2020
+
 ### devlopr-jekyll - A Beautiful Jekyll Theme Built for Developers
 
 [![Gem Version](https://badge.fury.io/rb/devlopr.svg)](https://badge.fury.io/rb/devlopr)![workflow-badge](https://github.com/sujaykundu777/devlopr-jekyll/workflows/deploy/badge.svg)
