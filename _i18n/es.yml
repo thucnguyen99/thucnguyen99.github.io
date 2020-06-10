@@ -37,10 +37,10 @@ title_projects: Proyectos
 author_work_experiences:
   - company_name: Next Limit
     designation: Software Engineer
-    description: Working on AnyverseAI project
+    description: Trabajando en el proyecto AnyverseAI. Enfocado en la generación de datasets sintéticos para entrenar modelos de percepción.
   - company_name: Ilion Animation Studios
     designation: Technical Director CFX, FX and Crowds
-    description: Worked on several departments developing tools to improve artists pipeline
+    description: Desarrollo de plugins y herramientas para optimizar el trabajo de los diferentes departamentos.
 
 # Education details
 author_education_details:
