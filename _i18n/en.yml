@@ -18,7 +18,7 @@ titles:
   contact: Contact
 
   
-
+# Typewrite text
 typewrite_intro: I am a
 typewrite_lines:
   - text: "Computer Graphics Engineer"
@@ -28,3 +28,30 @@ typewrite_lines:
   - text: "Photographer"
   - text: "3D Technical Developer"
   - text: "=)"
+
+
+#############
+# About page
+#############
+title_bio: About me
+author_bio: Hi, my name is Raquel Peces. I am a Computer Graphics Engineer and a Violinist =)
+
+title_projects: Projects
+
+# Work experiences
+author_work_experiences:
+  - company_name: Next Limit
+    designation: Software Engineer
+    description: Working on AnyverseAI project
+  - company_name: Ilion Animation Studios
+    designation: Technical Director CFX, FX and Crowds
+    description: Worked on several departments developing tools to improve artists pipeline
+
+# Education details
+author_education_details:
+  - college_name: URJC
+    college_degree: Masters Degree Computer Graphics
+    description: Computer Graphics, Games and Virtual Reality
+  - college_name: UCM
+    college_degree: Computer Engineer
+    description: Computer Science Degree

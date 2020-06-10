@@ -10,7 +10,7 @@ footer: true
       <a href="/">
         <img src="{{ site.url }}{{site.baseurl_root}}/assets/img/{{ site.author_logo }}" class="profile-img" />
       </a>
-      <h1 class="profile-name">{{ site.title }}</h1>
+      <h1 class="profile-name">{{ site.author }}</h1>
       <p class="profile-bio">{{ site.subtitle }}</p>
       {% if site.github_username %} {%- include github_follow_button.html -%} {%
       endif %}
@@ -91,16 +91,17 @@ footer: true
   </div>
   <div class="col-lg-7">
     {% if site.author_bio %}
-    <div class="card">
-      <h1 class="card-title">About</h1>
-      <p>{{ site.author_bio }}</p>
-    </div>
-    {% endif %} {% if site.show_author_project_details == true %}
+      <div class="card">
+        <h1 class="card-title">{% translate title_bio %}</h1>
+        <p>{% translate author_bio %}</p>
+      </div>
+    {% endif %}
+
+    {% if site.show_author_project_details == true %}
     <div id="author_projects" class="card">
       <h1 class="card-title">Projects</h1>
       <br />
-      {% for project in site.author_project_details %} {% if project.visibility
-      == true %}
+      {% for project in site.author_project_details %} {% if project.visibility == true %}
       <div class="row" id="project-card">
         <div class="col-md-6">
           <img
@@ -126,8 +127,7 @@ footer: true
     <div class="card">
       <h1 class="card-title">Work Experience</h1>
       <br />
-      {% for exp in site.author_work_experiences %} {% if exp.visibility == true
-      %}
+      {% for exp in site.author_work_experiences %} {% if exp.visibility == true %}
       <div class="row">
         <div class="col-md-2">
           <img
@@ -136,20 +136,28 @@ footer: true
           />
         </div>
         <div class="col-md-6">
-          <h4 class="experience-title">{{ exp.designation }}</h4>
+          {% assign translated_work_list = site.translations[site.lang]["author_work_experiences"] %}
+          <!--<script> console.log("{{ site.translations[site.lang]['author_work_experiences'] }}"); console.log("{{ translated_work_list }}"); </script>-->
+          {% assign translated_work = translated_work_list | where_exp: "item", "item.company_name == exp.company_name" %}
+          <h2>{{ translated_work_list }}</h2>
+          <h2>{{ translated_work }}</h2>
+          <h2>{{ translated_work.designation }}</h2>
+          <h2>{{ translated_work.description }}</h2>
+          <h4 class="experience-title">{{ translated_work.designation }}</h4>
           <h6 class="experience-info">{{ exp.company_name}}</h6>
-          <p class="experience-desc">{{ exp.description }}</p>
+          <p class="experience-desc">{{ translated_work.description }}</p>
           <p><a href="{{exp.company_url}}">{{ exp.company_url}}</a></p>
         </div>
       </div>
       {% endif %} {% endfor %}
     </div>
-    {% endif %} {% if site.show_author_education_details == true %}
+    {% endif %} 
+    
+    {% if site.show_author_education_details == true %}
     <div class="card">
       <h1 class="card-title">Education</h1>
       <br />
-      {% for detail in site.author_education_details %} {% if detail.visibility
-      == true %}
+      {% for detail in site.author_education_details %} {% if detail.visibility == true %}
       <div class="row">
         <div class="col-md-2">
           <img
@@ -158,10 +166,18 @@ footer: true
           />
         </div>
         <div class="col-md-6">
-          <h4 class="experience-title">{{detail.college_degree }}</h4>
-          <h6 class="experience-info">{{detail.college_name}}</h6>
-          <p class="experience-desc">{{detail.description}}</p>
-          <p><a href="{{detail.college_url}}">{{ detail.college_url}}</a></p>
+          {% assign translated_college_list = site.translations[site.lang]["author_education_details"] %}
+          <!--<script> console.log("{{ site.translations[site.lang]['author_education_details'] }}"); console.log("{{ translated_college_list }}"); </script>-->
+          {% assign translated_college = translated_college_list | where_exp: "item", "item.college_name == detail.college_name" %}
+          <!--<script> console.log("{{ translated_college }}"); </script>-->
+          <h2>{{ translated_college_list }}</h2>
+          <h2>{{ translated_college }}</h2>
+          <h2>{{ translated_college.college_degree }}</h2>
+          <h2>{{ translated_college.description }}</h2>
+          <h4 class="experience-title">{{ translated_college.college_degree }}</h4>
+          <h6 class="experience-info">{{ detail.college_name }}</h6>
+          <p class="experience-desc">{{ translated_college.description }}</p>
+          <p><a href="{{detail.college_url}}">{{ detail.college_url }}</a></p>
         </div>
       </div>
       {% endif %} {% endfor %}

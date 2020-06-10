@@ -14,7 +14,7 @@ titles:
   contact: Contacto
 
   
-
+# Typewrite text
 typewrite_intro: Yo soy
 typewrite_lines:
   - text: "Ingeniera especializada en Informática Gráfica"
@@ -24,3 +24,29 @@ typewrite_lines:
   - text: "Fotógrafa"
   - text: "Directora Técnica de proyectos 3D"
   - text: "=)"
+
+#############
+# About page
+#############
+title_bio: Soy yo
+author_bio: Hola, mi nombre es Raquel Peces. Soy Ingeniera Informática especializada en Informática Gráfica y también toco el violín =)
+
+title_projects: Proyectos
+
+# Work experiences
+author_work_experiences:
+  - company_name: Next Limit
+    designation: Software Engineer
+    description: Working on AnyverseAI project
+  - company_name: Ilion Animation Studios
+    designation: Technical Director CFX, FX and Crowds
+    description: Worked on several departments developing tools to improve artists pipeline
+
+# Education details
+author_education_details:
+  - college_name: URJC
+    college_degree: Master en Informática Gráfica
+    description: Informática Gráfica, Juegos y Realidad Virtual
+  - college_name: UCM
+    college_degree: Ingeniería Informática
+    description: Licenciatura en Ingeniería Superior Informática
