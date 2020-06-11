@@ -34,9 +34,13 @@ typewrite_lines:
 # About page
 #############
 title_bio: About me
-author_bio: Hi, my name is Raquel Peces. I am a Computer Graphics Engineer and a Violinist =)
-
 title_projects: Projects
+title_work: Work Experience
+title_education: Education
+title_coding: Coding Activity
+title_skills: Skills
+
+author_bio: Hi, my name is Raquel Peces. I am a Computer Graphics Engineer and a Violinist =)
 
 # Work experiences
 author_work_experiences:

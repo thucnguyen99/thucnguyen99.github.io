@@ -28,7 +28,14 @@ typewrite_lines:
 #############
 # About page
 #############
-title_bio: Soy yo
+
+title_bio: Acerca de
+title_projects: Proyectos
+title_work: Experiencia
+title_education: Educación
+title_coding: Actividad de programación
+title_skills: Aptitudes
+
 author_bio: Hola, mi nombre es Raquel Peces. Soy Ingeniera Informática especializada en Informática Gráfica y también toco el violín =)
 
 title_projects: Proyectos
