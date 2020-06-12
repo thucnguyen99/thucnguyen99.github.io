@@ -13,9 +13,11 @@ langs:
 navbar:
   about: About me
   contact: Contact
+  blog: Blog
 titles:
   about: About me
   contact: Contact
+  blog: Blog
 
   
 # Typewrite text

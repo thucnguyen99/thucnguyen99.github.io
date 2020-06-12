@@ -9,13 +9,13 @@ baseurl: "" # the subpath of your site, e.g. /blog
 ### Multi-Languag variable
 languages: ["es", "en"]
 default_lang: "es"
-exclude_from_localizations: ["assets", "gallery", "_sass"]
+exclude_from_localizations: ["assets", "gallery", "_sass", "_posts"]
 
 urls:
     - text: about
       url: /about
-    #- text: Blog
-    #  url: /blog
+    - text: blog
+      url: /blog
     #- text: Gallery
     #  url: /gallery
     #- text: Shop
@@ -54,28 +54,20 @@ author_work_experiences:
             - company_name: Next Limit
               company_logo: nextlimit.webp
               company_url: https://nextlimit.com
-              designation: Software Engineer
-              description: Working on AnyverseAI project
               visibility: true
             - company_name: Ilion Animation Studios
               company_logo: ilion.webp
               company_url: https://ilion.com
-              designation: Technical Director CFX, FX and Crowds
-              description: Worked on several departments developing tools to improve artists pipeline
               visibility: true
 
 author_education_details:
               - college_logo: urjc.webp
                 college_name: URJC
                 college_url: https://urjc.es
-                college_degree: Masters Degree Computer Graphics
-                description: Computer Graphics, Games and Virtual Reality
                 visibility: true
               - college_logo: ucm.webp
                 college_name: UCM
                 college_url: https://ucm.es
-                college_degree: Computer Engineer
-                description: Computer Science Degree
                 visibility: true
 
                 

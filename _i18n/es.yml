@@ -9,9 +9,11 @@ langs:
 navbar:
   about: Sobre mí
   contact: Contacto
+  blog: Blog
 titles:
   about: Sobre mí
   contact: Contacto
+  blog: Blog
 
   
 # Typewrite text
