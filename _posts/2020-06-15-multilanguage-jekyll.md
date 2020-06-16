@@ -155,7 +155,9 @@ localhost:4000/en/about
 Si añadimos la funcionalidad de multi-idioma, también hay que añadir un botón de switch para cambiar entre idiomas. Eso lo puedes hacer de forma bastante sencilla.
 En mi caso lo he añadido con iconos de idioma en la barra de navegación.
 
-```
+
+{% highlight html%}
+{% raw %}
 <li class="nav-item">
   {% if site.lang == "es" %}
     {% capture link1 %}{{ site.baseurl_root }}/en{{ page.url }}{% endcapture %}
@@ -165,14 +167,15 @@ En mi caso lo he añadido con iconos de idioma en la barra de navegación.
       <a href="{{ link2 }}" class="lang-switcher english" title="English Website"><img src="es.webp"/>{% t global.es %}</a>
   {% endif %}
 </li>
-```
+{% endraw %}
+{% endhighlight%}
 
 ## Publicación automática
 
 Este es el punto más controvertido de todo el desarrollo. Hasta aquí puedes tener tu web perfectamente funcional en local, pero que no puedas publicarla en Github Pages.
 Así que vamos a ir paso a paso
 
-### Crear una rama y ponerla como default
+#### Crear una rama y ponerla como default
 
 En primer lugar vamos a cambiar nuestra rama principal, para guardar todo nuestro historial de código a una rama diferente a master. Puede que ya trabajes con una rama de desarrollo y otra de procucción, pero si no es así es el momento de crearla.
 Ejecuta los siguientes comandos en tu repositorio en local, en mi caso mi rama para guardar el historial la he llamado `source`:
@@ -184,7 +187,7 @@ $ git push -u origin source
 
 Luego dirigete a tu repositorio de Github y configura esta rama recien creada como la rama por defecto del proyecto `Github web > your repository > Settings > Branches > Default branch`
 
-### Rakefile
+#### Rakefile
 
 Si ya tenías un fichero de compilación de Rake luciría similar a:
 
@@ -243,7 +246,7 @@ En mi caso además he añadido la configuración de usuario y email. Simplemente
 Si no tienes un fichero `Rakefile` simplemente crea uno y copia el código
 
 
-### Ejecutar rake publish
+#### Ejecutar rake publish
 
 Como último paso para publicar nuestra web en la rama `master` de nuestro repositori y que así seá la web que queremos que esté en producción.
 Simplemente ejecuta el comando:
