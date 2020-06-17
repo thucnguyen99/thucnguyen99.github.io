@@ -180,7 +180,7 @@ Así que vamos a ir paso a paso
 En primer lugar vamos a cambiar nuestra rama principal, para guardar todo nuestro historial de código a una rama diferente a master. Puede que ya trabajes con una rama de desarrollo y otra de procucción, pero si no es así es el momento de crearla.
 Ejecuta los siguientes comandos en tu repositorio en local, en mi caso mi rama para guardar el historial la he llamado `source`:
 
-```git
+```
 $ git checkout -b source master
 $ git push -u origin source
 ```

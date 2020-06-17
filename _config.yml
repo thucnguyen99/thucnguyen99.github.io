@@ -9,7 +9,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 ### Multi-Language config
 languages: ["es", "en"]
 default_lang: "es"
-exclude_from_localizations: ["assets", "gallery", "_sass", "_posts"]
+exclude_from_localizations: ["assets", "gallery", "_sass"]
 
 urls:
     - text: about
