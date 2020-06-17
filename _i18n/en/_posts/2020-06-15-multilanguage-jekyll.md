@@ -74,10 +74,10 @@ To avoid redundancy, it is possible to exclude files and folders from being copi
 ## Folder Structure
 
 Ya está todo configurado, es la hora de añadir la estructura de ficheros para construir nuestra página con los diferentes idiomas. 
-En un proyecto de Jekyll sin multi-idioma, se compilan los ficheros `.md` sobre la estructura base, en el caso de los posts, sería bajo la carpeta `_posts`. En caso de tener multiples idiomas habría que crear ese directorio por cada idioma. Igual para cualquier fichero que cambiemos por idioma.
+In the Jekyll project without multiple-languages-plugin, Jekyll builds the `.md` files under the folder structure, in posts cases, it will by in `_posts` folder. However, if you install jekyll-multiple-languages-plugin, jekyll serve command will build the _posts folder under the _i18n directory.
 
-En primer lugar, en el directorio raíz hay que crear una carpeta con el nombre `_i18n` y añadir subcarpetas por cada uno de los idiomas usando los mismos nombres que hemos usado en nuestro fichero de configuración.
-Vuestro directorio de ficheros debería añadir una estructura similar a esta:
+In first place, create a folder called _i18n and add sub-folders for each language, using the same names used on the languages setting on the configuration file:
+It should look similar to this folder structure:
 
 ```
 _i18n
@@ -94,10 +94,11 @@ _i18n
 ```
 
 
-## Configuracion idiomas.yml
+## Setting language.yml
 
-Estos ficheros son a los que se llamara cuando queramos traducir un texto concreto. Por ejemplo, los textos del menú de navegación. 
-Estos ficheros deberían ser similares a estos ejemplos:
+The language.yml files are written in YAML syntax which caters for a simple grouping of strings.
+Those files have the sentences that we want to be translated, and configuration for each language. For example the navbar titles.
+For example, we have spanish and english yaml file:
 
 ###### es.yml
 
@@ -136,25 +137,25 @@ navbar:
 ## Navegar por paginas multi-idioma
 
 La navegación por nuestra página multi-idioma va a añadir automáticamente a nuestra web la subextensión correspondiente al idioma en el que estemos navegando cuando no se trate del idioma por defecto.
-Por lo que las direcciones que veremos en el explorador serán:
+The explorer links will look similar to:
 
-###### Idioma por defecto (Español)
+###### Default language (Spanish)
 ```
 raquelfishes.githug.io/about
 localhost:4000/about
 ```
 
-###### Pagina en otro idioma (Inglés)
+###### Other language (English)
 ```
 raquelfishes.githug.io/en/about
 localhost:4000/en/about
 ```
 
-## Intercambio de idiomas
+## Switching languages
 
-Si añadimos la funcionalidad de multi-idioma, también hay que añadir un botón de switch para cambiar entre idiomas. Eso lo puedes hacer de forma bastante sencilla.
-En mi caso lo he añadido con iconos de idioma en la barra de navegación.
-
+Now that you got a multilingual feature, you might need a langage switcher.
+In my case I have added flag icons at the navigation bar for switching between both languages.
+This snippet will create a link that will toggle between Spanish and English.
 
 {% highlight html%}
 {% raw %}
@@ -170,26 +171,25 @@ En mi caso lo he añadido con iconos de idioma en la barra de navegación.
 {% endraw %}
 {% endhighlight%}
 
-## Publicación automática
+## Auto publish
 
-Este es el punto más controvertido de todo el desarrollo. Hasta aquí puedes tener tu web perfectamente funcional en local, pero que no puedas publicarla en Github Pages.
-Así que vamos a ir paso a paso
+This is the hardest point of the development. At this point your web is working in local, but you cant publish it to Github Pages. Then, I will explain it step by step.
 
-#### Crear una rama y ponerla como default
+#### Create a branch and setting to default
 
-En primer lugar vamos a cambiar nuestra rama principal, para guardar todo nuestro historial de código a una rama diferente a master. Puede que ya trabajes con una rama de desarrollo y otra de procucción, pero si no es así es el momento de crearla.
-Ejecuta los siguientes comandos en tu repositorio en local, en mi caso mi rama para guardar el historial la he llamado `source`:
+In first place, we are gonna change our default branch, just to store all our commits history in a different branch fro master. If you already work with a develop branch and other for production, you don't have to do extra work. If not, this is the moment for creating it.
+Run these commands below in you local repository, in my project the history branch is `source`:
 
 ```
 $ git checkout -b source master
 $ git push -u origin source
 ```
 
-Luego dirigete a tu repositorio de Github y configura esta rama recien creada como la rama por defecto del proyecto `Github web > your repository > Settings > Branches > Default branch`
+And then, go to your Github repository, and configure this branch as the default project branch `Github web > your repository > Settings > Branches > Default branch`
 
 #### Rakefile
 
-Si ya tenías un fichero de compilación de Rake luciría similar a:
+If you had a previous Rake build file in your site, it probably look similar to:
 
 ```ruby
 namespace :assets do
@@ -241,32 +241,31 @@ task :publish => [:generate] do
   end
 end
 ```
-En mi caso además he añadido la configuración de usuario y email. Simplemente copia y pega este código en tu fichero y reemplaza con tu usuario y repositorio.
+I have added the user and email local config. Just copy and paste the code in your file and replace with your personal info and repository.
+If there is no `Rakefile`, you can just create a new one and copy the code.
 
-Si no tienes un fichero `Rakefile` simplemente crea uno y copia el código
 
+#### Run rake publish
 
-#### Ejecutar rake publish
-
-Como último paso para publicar nuestra web en la rama `master` de nuestro repositori y que así seá la web que queremos que esté en producción.
-Simplemente ejecuta el comando:
+The last step to publish our website in our repository `master` branch, and then can visit this page at the public site.
+Now can easily execute the following command:
 ```console
 $ rake publish
 $ git push
 ```
-o también:
+or:
 ```console
 $ bundle exec rake publish
 $ git push
 ```
-Y haz push de tu proyecto completo, así sincronizaras los commits que también tengas en la rama de desarrollo.
+And push your full local repository, so it will syncronize local commits at development state.
 
 
-## Para cerrar el tema...
+## Finishing this topic...
 
-La verdad es que desde el principio he querido tener esta web en dos idiomas. Mi lengua principal es el Español y considero que aunque como personas técnicas estamos acostumbrados a buscar todo en inglés, siempre se agradece encontrar documentación en tu propio idioma. 
-He invertido bastante tiempo en conseguir configurar Jekyll en Github para poder tener ambos idiomas, buscando en muchos sitios, y el problema siempre llegaba a la hora de subirlo a Github... porque fallaba la build. 
-Espero que este artículo así como su correspondiente también en inglés ayuden a otros a no perder tanto tiempo en esta funcionalidad... 
+From the beginning of this website project I wanted to have it with two languages. The Spanish is my native language, and from my point of view like a computer engineer, we use to read all the technical documentation in english, I appreciate and want to contribute to find technical info in spanish.
+I have spent A LOT OF TIME to have this Jekyll project in Github to have both languages, searching in several places, and the problem was integrate with Github because of failed builds.
+I hope this article and spanish one help others to not loose so many time with this functionality...
 
 =)
 
