@@ -3,7 +3,9 @@ layout: post
 title:  "Multiples Idiomas para Jekyll y Github Pages!"
 author: Raquel Peces
 date: '2020-06-15 14:35:23 +0530'
-category: jekyll
+category: 
+        - jekyll
+        - github pages
 thumbnail: /assets/img/posts/ghpages_jekyll_multilang.png
 ---
 En este post voy a explicar como añadir la funcionalidad de multi-idioma a tu plantilla de Jekyll usando [Github Pages](github_pages).
