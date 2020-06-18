@@ -1,7 +1,6 @@
 <meta charset="utf-8" />
 <title>
-{% if {page.title %}{{ page.title }}{% else %}{{ site.title }} - {{
-site.subtitle }}{% endif %}
+{% if {page.title %}{{ page.title }}{% else %}{{ site.title }} - {{site.subtitle }}{% endif %}
 </title>
 <meta http-equip="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,8 +37,7 @@ site.subtitle }}{% endif %}
 {% if page.thumbnail %}
 <meta content="{{ site.url }}{{site.baseurl}}{{ page.thumbnail }}" property="og:image" />
 {% endif %} 
-{% if page.categories %} {% for category in page.categories
-limit:1 %}
+{% if page.categories %} {% for category in page.categories limit:1 %}
 <meta content="{{ category }}" property="article:section" />
 {% endfor %} {% endif %} 
 
