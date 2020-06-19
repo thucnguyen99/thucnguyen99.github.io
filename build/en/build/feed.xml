@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es"><generator uri="https://jekyllrb.com/" version="4.1.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="es" /><updated>2020-06-18T17:39:31+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">raquelFishes</title><subtitle>Personal site of Raquel Peces (a.k.a. raquelFishes)</subtitle><author><name>Raquel Peces</name></author><entry><title type="html">Multiples Idiomas para Jekyll y Github Pages!</title><link href="http://localhost:4000/jekyll/2020/06/15/multilanguage-jekyll/" rel="alternate" type="text/html" title="Multiples Idiomas para Jekyll y Github Pages!" /><published>2020-06-15T11:05:23+02:00</published><updated>2020-06-15T11:05:23+02:00</updated><id>http://localhost:4000/jekyll/2020/06/15/multilanguage-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/2020/06/15/multilanguage-jekyll/">&lt;p&gt;En este post voy a explicar como añadir la funcionalidad de multi-idioma a tu plantilla de Jekyll usando &lt;a href=&quot;github_pages&quot;&gt;Github Pages&lt;/a&gt;.
+Para añadir esta funcionalidad a nuestra web lo mejor es usar uno de los plugins que existen, pero Github no soporta todos los plugins, en este &lt;a href=&quot;jekyll_allowed_plugins&quot;&gt;enlace&lt;/a&gt; podeis encontrar los plugins soportados en Github. Por lo que puede que tengamos nuestra página funcionando en local pero luego cuando subamos nuestra página cause errores de compilación durante el proceso de build. Un modo de conseguir que nuestra página funcione es saltarnos ese proceso de build y subiendo nuestra página ya compilada a la rama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; de nuestro proyecto, y mantener el control de versiones en otra rama a parte.&lt;/p&gt;
+
+&lt;h2 id=&quot;jekyll-multiple-laguages-plug-in&quot;&gt;jekyll-multiple-laguages plug-in&lt;/h2&gt;
+
+&lt;p&gt;Hay varios modos de instalar el plugin &lt;a href=&quot;jekyll_multile_languages&quot;&gt;jekyll-multiple-languages&lt;/a&gt;. Si necesitáis más información podeis dirigiros al repositorio del proyecto. ¡Buscan colaboradores!&lt;/p&gt;
+
+&lt;h3 id=&quot;usando-una-gema-de-ruby&quot;&gt;Usando una gema de Ruby&lt;/h3&gt;
+
+&lt;p&gt;En mi caso he elegido instalarlo a través de la gema de Ruby.
+Para ello es necesario añadir la siguiente linea al archivo Gemfile&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'jekyll-multiple-languages-plugin'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Una vez añadida la gema, hay que ejecutar:&lt;/p&gt;
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O instalar la gema concreta:&lt;/p&gt;
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jekyll-multiple-languages-plugin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para activar el plugin añadirlo al fichero de Jekyll _config.yml, bajo la opcion de plugins:&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-multiple-languages-plugin&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;como-un-submodulo-de-git&quot;&gt;Como un submodulo de Git&lt;/h3&gt;
+
+&lt;p&gt;En algunos casos, dependiendo del tema que se use puede haber problemas con instalar el plugin como gema. Para evitar estos problemas se puede optar por añadir el plugin como submódulo. Para ello hay que dirigirse al directorio raíz del proyecto y ejecutar:&lt;/p&gt;
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;git submodule add git://github.com/screeninteraction/jekyll-multiple-languages-plugin.git _plugins/multiple-languages
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para actualizarlo, cuando sea necesario habría que dirigirse a:&lt;/p&gt;
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;_plugins/multiple-languages
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;git pull origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;configuración-del-fichero-_configyml&quot;&gt;Configuración del fichero _config.yml&lt;/h2&gt;
+
+&lt;p&gt;Una vez instalado el plugin, hay que añadir los idiomas que queramos en nuestro fichero de configuracion &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Multi-Language config&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;languages&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;es&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;en&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;default_lang&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;es&quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;exclude_from_localizations&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;assets&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;gallery&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;_sass&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;También podemos especificar cual será nuestro idioma por defecto. En caso de no añadir esa variable se seleccionará por defecto el primero de la lista de idiomas.
+Otra funcionalidad a tener cuenta es decir qué directorios no vamos a replicar por cada idioma, de este modo eliminaremos redundancias posibles y replicar ficheros que son iguales en todos los idiomas. Estos directorios serán aquellos en los que tengáis imágenes u otros recursos comunes.&lt;/p&gt;
+
+&lt;h2 id=&quot;estructura-de-directorios&quot;&gt;Estructura de directorios&lt;/h2&gt;
+
+&lt;p&gt;Ya está todo configurado, es la hora de añadir la estructura de ficheros para construir nuestra página con los diferentes idiomas. 
+En un proyecto de Jekyll sin multi-idioma, se compilan los ficheros &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.md&lt;/code&gt; sobre la estructura base, en el caso de los posts, sería bajo la carpeta &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt;. En caso de tener multiples idiomas habría que crear ese directorio por cada idioma. Igual para cualquier fichero que cambiemos por idioma.&lt;/p&gt;
+
+&lt;p&gt;En primer lugar, en el directorio raíz hay que crear una carpeta con el nombre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_i18n&lt;/code&gt; y añadir subcarpetas por cada uno de los idiomas usando los mismos nombres que hemos usado en nuestro fichero de configuración.
+Vuestro directorio de ficheros debería añadir una estructura similar a esta:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;_i18n
+│   en.yml
+│   es.yml    
+│
+└───es
+│   └───pagename
+│       │   file111.txt
+└───en
+│   └───pagename
+│   │   file111.txt
+│   ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;configuracion-idiomasyml&quot;&gt;Configuracion idiomas.yml&lt;/h2&gt;
+
+&lt;p&gt;Estos ficheros son a los que se llamara cuando queramos traducir un texto concreto. Por ejemplo, los textos del menú de navegación. 
+Estos ficheros deberían ser similares a estos ejemplos:&lt;/p&gt;
+
+&lt;h6 id=&quot;esyml&quot;&gt;es.yml&lt;/h6&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;site_title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Raquel Fishes web&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;site_description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Sitio Web de Raquel Fishes&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;langs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;english&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Ingles&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;spanish&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Español&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;en&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;EN&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;es&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ES&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;navbar&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;about&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Sobre mí&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;contact&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Contacto&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;blog&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Blog&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;enyml&quot;&gt;en.yml&lt;/h6&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;site_title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Raquel Fishes website&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;site_description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Raquel Fishes personal page&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;langs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;english&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;English&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;spanish&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Spanish&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;en&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;EN&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;es&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ES&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;navbar&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;about&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;About me&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;contact&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Contact&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;blog&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Blog&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;navegar-por-paginas-multi-idioma&quot;&gt;Navegar por paginas multi-idioma&lt;/h2&gt;
+
+&lt;p&gt;La navegación por nuestra página multi-idioma va a añadir automáticamente a nuestra web la subextensión correspondiente al idioma en el que estemos navegando cuando no se trate del idioma por defecto.
+Por lo que las direcciones que veremos en el explorador serán:&lt;/p&gt;
+
+&lt;h6 id=&quot;idioma-por-defecto-español&quot;&gt;Idioma por defecto (Español)&lt;/h6&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;raquelfishes.githug.io/about
+localhost:4000/about
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;pagina-en-otro-idioma-inglés&quot;&gt;Pagina en otro idioma (Inglés)&lt;/h6&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;raquelfishes.githug.io/en/about
+localhost:4000/en/about
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;intercambio-de-idiomas&quot;&gt;Intercambio de idiomas&lt;/h2&gt;
+
+&lt;p&gt;Si añadimos la funcionalidad de multi-idioma, también hay que añadir un botón de switch para cambiar entre idiomas. Eso lo puedes hacer de forma bastante sencilla.
+En mi caso lo he añadido con iconos de idioma en la barra de navegación.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nav-item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  {% if site.lang == &quot;es&quot; %}
+    {% capture link1 %}{{ site.baseurl_root }}/en{{ page.url }}{% endcapture %}
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ link1 }}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;lang-switcher spanish&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Website en español&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en.webp&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;{% t global.en %}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+  {% elsif site.lang == &quot;en&quot; %}
+    {% capture link2 %}{{ site.baseurl_root }}{{ page.url }}{% endcapture %}
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ link2 }}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;lang-switcher english&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;English Website&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;es.webp&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;{% t global.es %}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+  {% endif %}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;publicación-automática&quot;&gt;Publicación automática&lt;/h2&gt;
+
+&lt;p&gt;Este es el punto más controvertido de todo el desarrollo. Hasta aquí puedes tener tu web perfectamente funcional en local, pero que no puedas publicarla en Github Pages.
+Así que vamos a ir paso a paso&lt;/p&gt;
+
+&lt;h4 id=&quot;crear-una-rama-y-ponerla-como-default&quot;&gt;Crear una rama y ponerla como default&lt;/h4&gt;
+
+&lt;p&gt;En primer lugar vamos a cambiar nuestra rama principal, para guardar todo nuestro historial de código a una rama diferente a master. Puede que ya trabajes con una rama de desarrollo y otra de procucción, pero si no es así es el momento de crearla.
+Ejecuta los siguientes comandos en tu repositorio en local, en mi caso mi rama para guardar el historial la he llamado &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout -b source master
+$ git push -u origin source
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Luego dirigete a tu repositorio de Github y configura esta rama recien creada como la rama por defecto del proyecto &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Github web &amp;gt; your repository &amp;gt; Settings &amp;gt; Branches &amp;gt; Default branch&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;rakefile&quot;&gt;Rakefile&lt;/h4&gt;
+
+&lt;p&gt;Si ya tenías un fichero de compilación de Rake luciría similar a:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:assets&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:precompile&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`bundle exec jekyll build`&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Simplemente compilaba como podemos compilar en nuestro local, pero eso ahora no funcionará porque Github no soporta el plugin que queremos que incorpore nuestro proyecto de Jekyll. Ahora nuestro fichero de Rake necesitamos que nos copie la página compilada ya a nuestra rama master y la suba tal cual, evitando que Github haga ese paso. Para ello nuestro fichero de compilación será:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;tmpdir&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rubygems&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Auto publish&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Change your GitHub reponame&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;GITHUB_REPONAME&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;username/username.github.io&quot;&lt;/span&gt;
+
+
+&lt;span class=&quot;n&quot;&gt;desc&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Generate blog files&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:generate&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Jekyll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Jekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;configuration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;source&quot;&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;destination&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;_site&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;})).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;process&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;desc&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Generate and publish blog to gh-pages&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:publish&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;mktmpdir&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cp_r&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;_site/.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;pwd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pwd&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;Dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;chdir&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;git init&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;git config --local user.name username&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;git config --local user.email usermail&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;git add .&quot;&lt;/span&gt;
+	  &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Site updated at &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;utc&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+	  &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;git commit -m &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;inspect&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;git remote add origin https://github.com/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;GITHUB_REPONAME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.git&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;git push origin master --force&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;no&quot;&gt;Dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;chdir&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pwd&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;En mi caso además he añadido la configuración de usuario y email. Simplemente copia y pega este código en tu fichero y reemplaza con tu usuario y repositorio.&lt;/p&gt;
+
+&lt;p&gt;Si no tienes un fichero &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Rakefile&lt;/code&gt; simplemente crea uno y copia el código&lt;/p&gt;
+
+&lt;h4 id=&quot;ejecutar-rake-publish&quot;&gt;Ejecutar rake publish&lt;/h4&gt;
+
+&lt;p&gt;Como último paso para publicar nuestra web en la rama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; de nuestro repositori y que así seá la web que queremos que esté en producción.
+Simplemente ejecuta el comando:&lt;/p&gt;
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;rake publish
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;git push
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;o también:&lt;/p&gt;
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rake publish
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;git push
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Y haz push de tu proyecto completo, así sincronizaras los commits que también tengas en la rama de desarrollo.&lt;/p&gt;
+
+&lt;h2 id=&quot;para-cerrar-el-tema&quot;&gt;Para cerrar el tema…&lt;/h2&gt;
+
+&lt;p&gt;La verdad es que desde el principio he querido tener esta web en dos idiomas. Mi lengua principal es el Español y considero que aunque como personas técnicas estamos acostumbrados a buscar todo en inglés, siempre se agradece encontrar documentación en tu propio idioma. 
+He invertido bastante tiempo en conseguir configurar Jekyll en Github para poder tener ambos idiomas, buscando en muchos sitios, y el problema siempre llegaba a la hora de subirlo a Github… porque fallaba la build. 
+Espero que este artículo así como su correspondiente también en inglés ayuden a otros a no perder tanto tiempo en esta funcionalidad…&lt;/p&gt;
+
+&lt;p&gt;=)&lt;/p&gt;</content><author><name>Raquel Peces</name></author><category term="jekyll" /><summary type="html">En este post voy a explicar como añadir la funcionalidad de multi-idioma a tu plantilla de Jekyll usando Github Pages. Para añadir esta funcionalidad a nuestra web lo mejor es usar uno de los plugins que existen, pero Github no soporta todos los plugins, en este enlace podeis encontrar los plugins soportados en Github. Por lo que puede que tengamos nuestra página funcionando en local pero luego cuando subamos nuestra página cause errores de compilación durante el proceso de build. Un modo de conseguir que nuestra página funcione es saltarnos ese proceso de build y subiendo nuestra página ya compilada a la rama master de nuestro proyecto, y mantener el control de versiones en otra rama a parte.</summary></entry></feed>
