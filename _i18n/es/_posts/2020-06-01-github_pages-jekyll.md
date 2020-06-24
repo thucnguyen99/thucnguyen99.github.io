@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "¡Crea tu web gratis con Jekyll y Github Pages!"
+title:  "¡Crea tu web gratis con Github Pages!"
 summary: Cómo empezar con Github Pages, la forma más rápida, increible y gratis de crear tu blog o web.
 author: Raquel Peces
 date: '2020-06-08 14:35:23 +0530'
 category: 
         - jekyll
         - github pages
-thumbnail: /assets/img/posts/ghpages_jekyll.png
+thumbnail: /assets/img/posts/ghpages.png
 ---
 <blockquote>
 <p>Github Pages permite convertir cualquier repositorio en una página web con solo un par de clicks.</p>
@@ -41,4 +41,32 @@ Si eres totalmente nuevo a todo lo que estoy contando, quizá deberías echar un
 Hay dos modos de empezar tu página web. Puede que comiences totalmente desde cero, no tienes nada, ni index.hmtl. O puedes tener una web o plantilla html ya creada, pero no sabes como subirla a Github y así poder tenerla online de forma gratuita.
 
 ### Ya tengo los ficheros de mi web, pero no sé qué hacer con ellos
+
+Este es el caso más sencillo. Github hace todo el trabajo por ti. Asumiendo que ya tienes una cuenta de Github y que sabes lo que es un repositorio, sino, deberías echar un vistazo a mi anterior artículo sobre como empezar con Git y Github.
+
+Digamos que nuestro repositorio será como el cascarón de un huevo, es donde nuestro proyecto vivie. Ahí puedes organizarlo por carpetas, añadir imagenes, videos, cualquier cosa que tu proyecto necesite puede estar en el repositorio.
+
+Si todavía no lo has hecho, inicializa tu proyecto con un repositorio, o puedes crear un repositorio y añadir tus ficheros. Si en el directorio raíz ya tienes un fichero llamado `index.html` Github sabrá perfectamente qué hacer.
+
+Ahora vas a aprender a aprovecharte de Github Pages. Tienes que ir a tu repositorio de Github y hacer click en `Settings`
+![github settings](/assets/img/posts/gh_settings.png){:class="img-fluid"}
+
+Una vez que estamos en la página de configuración hay que hacer scroll en la página hacia abajo hasta llegar a la seccion de `Github Pages`
+![github pages](/assets/img/posts/gh_settings_pages.png){:class="img-fluid"}
+
+Ahora desplega el menú de `Source` y selecciona la opción de `Master branch`. Esto hará que nuestra página tome como rama para mostrar nuestra página principal la rama master del repositorio, que sería como la rama principal por defecto del repositorio.
+![github pages source](/assets/img/posts/gh_settings_pages_source.png){:class="img-fluid"}
+
+En este caso verás una notificacion como que tu sitio está listo para ser publicado.
+![github publishing](/assets/img/posts/gh_settings_publishing.png){:class="img-fluid"}
+
+Sé paciente, puede tomar un par de minutos, entonces refresca la página y verás que la notificación ha cambiado y te dice que tu página ya ha sido publicada con la direccion web en la que podrás ver tu página.
+![github published](/assets/img/posts/gh_settings_published.png){:class="img-fluid"}
+
+Prueba a hacer click en el link y ¡MAGIA!
+
+¡¡Ya tienes tu web gratis publicada!!
+
+
+### No sé ni por donde empezar
 
