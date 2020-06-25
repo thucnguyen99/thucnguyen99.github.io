@@ -1,20 +1,42 @@
+
 @import url(https://fonts.googleapis.com/css?family=Lilita+One);
 
 * { user-select: none; }
 
+
+body {
+  background-color: #1d3f59 !important;;
+  color: var(--main-text-color) !important;
+  font-family: "Voltaire", Helvetica, Arial, sans-serif !important;
+  font-feature-settings: "kern"on;
+  font-size: 1.4rem;
+  font-variant-numeric: oldstyle-nums;
+  hanging-punctuation: first last;
+  height: 100%;
+  line-height: 1.35em;
+  margin: 0;
+  text-rendering: optimizeLegibility;
+  padding-top:33px;
+  overflow-x:hidden;
+  overflow-y:scroll;
+}
+
+/* Error message */
+
 .error_message {
   text-align: left;
   position: relative;
-  margin: 20vh auto;
-  font-family: "Voltaire", Helvetica, Arial, sans-serif;
-  font-weight: 400
+  margin: 10vh auto;
+  font-weight: 400;
+  padding: 0 5vh;
+  z-index: 3;
 }
 .error_message * {
   pointer-events: visible;
 }
 .error_message h1 {
   color: #333;
-  font-size: 4em;
+  font-size: 10em;
   position: relative;
   font-weight: 400;
   margin: 30px 0;
@@ -43,19 +65,25 @@
   opacity: 0.8;
 }
 
-.counter h1{
+/* Counter */
+.counter {
   position: absolute;
-  top: calc(50% - 125px);
+  top: calc(75%);
   left: 0;
   right: 0;
   margin: 0;
   padding: 0 20px;
+}
+
+.counter h1{
   color: #1d3f59 !important;
-  font: 8rem/1 'Lilita One', sans-serif;
+  font: 6rem/1 'Lilita One', sans-serif;
   white-space: nowrap;
   text-align: right;
   text-shadow: 0 0 80px rgba(255, 255, 255, 0.3);
 }
+
+/* Sea */
 
 .sea {
   height: auto !important;
@@ -66,7 +94,6 @@
   left: 0;
   right: 0;
   background-color: #204359;
-  margin-bottom: 80px;
 }
 
 .pond {

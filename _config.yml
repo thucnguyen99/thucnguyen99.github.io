@@ -7,7 +7,8 @@ url: "https://raquelfishes.github.io" # the base hostname & protocol for your si
 baseurl: "" # the subpath of your site, e.g. /blog
 
 ### Multi-Language config
-languages: ["es", "en"]
+#languages: ["es", "en"]
+languages: ["es"]
 default_lang: "es"
 exclude_from_localizations: ["assets", "gallery", "_sass"]
 
@@ -125,12 +126,12 @@ show_author_education_details: true
 show_author_project_details: true
 
 # algolia search
-algolia:
-  application_id: D9WA1YKTRQ
-  index_name: blog_posts # You can replace that with whatever name you want
-  files_to_exclude: []
-  nodes_to_index: 'article'
-  search_only_api_key: 58ffdd7cd6c45ec1577a7fcd789b1b9a
+#algolia:
+#  application_id: D9WA1YKTRQ
+#  index_name: blog_posts # You can replace that with whatever name you want
+#  files_to_exclude: []
+#  nodes_to_index: 'article'
+#  search_only_api_key: 58ffdd7cd6c45ec1577a7fcd789b1b9a
 
 # pagination of posts
 paginate: 4
@@ -172,7 +173,7 @@ plugins:
   - jekyll-gist
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-algolia
+  #- jekyll-algolia
   - jekyll-menus
   - jekyll-multiple-languages-plugin
 

@@ -70,3 +70,57 @@ Prueba a hacer click en el link y ¡MAGIA!
 
 ### No sé ni por donde empezar
 
+No voy a explicar como hacer una web, ni las diferentes librerias de diseño que puedes usar, sino que me voy a enfocar en lo básico.
+Prefiero que conozcas como crear algo de cero usando la herramienta que estoy presentando aquí y que con todo el tiempo que dispongas y las ganas que le pongas explores todo este mundo de diseño y programación web. Lo que voy a explicar aquí es como si eres totalmente nuevo crear una web en Github Pages.
+Lo primero vamos a crear un repositorio
+![github repository](/assets/img/posts/gh_new_repo.png){:class="img-fluid"}
+
+Rellena los datos de tu repositorio, nombre, descripcion y selecciona la opción de inicializiar el repositorio con un README `Initialize this repository with a README` y entonces dile que lo cree `Create repository`
+![github create](/assets/img/posts/gh_create_repo.png){:class="img-fluid"}
+
+Ahora al igual que en la sección anterior tienes que ir a `Settings`, cerca de la parte alta de la página al lado derecho de la pantalla
+![github settings](/assets/img/posts/gh_settings.png){:class="img-fluid"}
+
+Una vez que estés aquí, haz scroll en la página hacia abajo hasta llegar a la sección de `Github Pages`
+![github pages](/assets/img/posts/gh_settings_pages.png){:class="img-fluid"}
+
+Ahora desplega el menú de `Source` y selecciona la opción de `Master branch`. Esto hará que nuestra página tome como rama para mostrar nuestra página principal la rama master del repositorio, que sería como la rama principal por defecto del repositorio.
+![github pages source](/assets/img/posts/gh_settings_pages_source.png){:class="img-fluid"}
+
+En este caso verás una notificacion como que tu sitio está listo para ser publicado.
+![github publishing](/assets/img/posts/gh_settings_publishing.png){:class="img-fluid"}
+
+Sé paciente, puede tomar un par de minutos, entonces refresca la página y verás que la notificación ha cambiado y te dice que tu página ya ha sido publicada con la direccion web en la que podrás ver tu página.
+![github published](/assets/img/posts/gh_settings_published.png){:class="img-fluid"}
+
+Ahora haz click en el link y podrás ver tu página.
+![github web](/assets/img/posts/gh_basic_web.png){:class="img-fluid"}
+
+¡Enhorabuena! ¡Ya estás online!
+
+
+### ¿Pero esto no es un poco feo?
+
+Te doy la razón, esta web es un poco bastante fea, si vuelves a tu repositorio podrás er que lo que se está mostrando es lo que hay en tu fichero `README.md`.
+![github readme](/assets/img/posts/gh_readme.png){:class="img-fluid"}
+
+Si quieres hacer algunos cambios, puedes ir a la parte de arriba y editar tu fichero, para editar lo que quieres que la gente vea. Para hacer esto, vuelve al repositorio, haz click en el icono del lapiz que puedes encontrar en el fichero README y modíficalo a tu antojo.
+![github edit readme](/assets/img/posts/gh_edit_readme.png){:class="img-fluid"}
+
+Ten en cuenta que estás modificando un fichero de tipo Markdown. Si no sabes mucho sobre este formato, puedes dirigirte a este [enlace](https://www.markdownguide.org/getting-started/) para ver la de opciones que te ofrece.
+
+
+Este tipo de ficheros es en realidad un lenguaje de programación, este post está escrito en formato Markdown, donde puedes añadir el formato de los elementos mientras escribes en texto plano. Incluye funcionalidades para añadir texto, lins, imágenes, colores e incluso formato de código. Aquí puedes encontrar la [Guía Gásica de la sintaxis de Markdown](https://www.markdownguide.org/basic-syntax/)
+
+¡Ahora vuelve a tu web, y comprueba como queda con los últimos cambios!
+![github web2](/assets/img/posts/gh_basic_web2.png){:class="img-fluid"}
+
+Ten en cuenta que a veces puede tomar varios minutos hasta que los cambios aparecen en la web publicada. También puedes tener algunos problemas con la cache de tu navegador, borrar la cache del navegador o abrir el enlace en un navegador con sesión oculta puede ayudar a ver los cambios antes.
+
+
+### ¿No se puede hacer nada mejor?
+
+Pues sí, sí se puede hacer mejor, a partir de aquí se pone interesante. Pero eso lo explicaré en otro post en el que os presentare Jekyll, framework con el que he creado yo esta página.
+Mientras espero que este tutorial os haya servido para abrir el apetito.
+
+=)
