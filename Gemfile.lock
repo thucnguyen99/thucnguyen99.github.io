@@ -3,12 +3,6 @@ GEM
   specs:
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    algolia_html_extractor (2.6.2)
-      json (~> 2.0)
-      nokogiri (~> 1.10.4)
-    algoliasearch (1.27.3)
-      httpclient (~> 2.8, >= 2.8.3)
-      json (>= 1.5.1)
     backports (3.17.2)
     colorator (1.1.0)
     concurrent-ruby (1.1.6)
@@ -28,10 +22,8 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.13.0)
     ffi (1.13.0-x64-mingw32)
-    filesize (0.2.0)
     forwardable-extended (2.6.0)
     http_parser.rb (0.6.0)
-    httpclient (2.8.3)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     jekyll (4.1.0)
@@ -53,15 +45,8 @@ GEM
       jekyll (>= 3.3, < 5.0)
       sinatra (~> 1.4)
       sinatra-contrib (~> 1.4)
-    jekyll-algolia (1.6.0)
-      algolia_html_extractor (~> 2.6)
-      algoliasearch (~> 1.26)
-      filesize (~> 0.1)
-      jekyll (>= 3.6, < 5.0)
-      json (~> 2.0)
-      nokogiri (~> 1.6)
-      progressbar (~> 1.9)
-      verbal_expressions (~> 0.1.5)
+    jekyll-archives (2.1.1)
+      jekyll (>= 2.4)
     jekyll-feed (0.13.0)
       jekyll (>= 3.7, < 5.0)
     jekyll-gist (1.5.0)
@@ -82,7 +67,6 @@ GEM
     jgd (1.12)
       jekyll (>= 1.5.1)
       trollop (= 2.9.9)
-    json (2.3.0)
     kramdown (2.2.1)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -92,20 +76,14 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
-    mini_portile2 (2.4.0)
     multi_json (1.14.1)
     multipart-post (2.1.1)
     nio4r (2.5.2)
-    nokogiri (1.10.9)
-      mini_portile2 (~> 2.4.0)
-    nokogiri (1.10.9-x64-mingw32)
-      mini_portile2 (~> 2.4.0)
     octokit (4.18.0)
       faraday (>= 0.9)
       sawyer (~> 0.8.0, >= 0.5.3)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    progressbar (1.10.1)
     public_suffix (4.0.5)
     puma (4.3.5)
       nio4r (~> 2.0)
@@ -153,7 +131,6 @@ GEM
     tzinfo-data (1.2020.1)
       tzinfo (>= 1.0.0)
     unicode-display_width (1.7.0)
-    verbal_expressions (0.1.5)
     wdm (0.1.1)
 
 PLATFORMS
@@ -162,22 +139,23 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
-  devlopr (~> 0.4.5)
+  devlopr
   jekyll (~> 4.0)
-  jekyll-admin (~> 0.9.0)
-  jekyll-algolia (~> 1.6)
-  jekyll-feed (~> 0.13.0)
-  jekyll-gist (~> 1.5.0)
-  jekyll-menus (~> 0.6.1)
-  jekyll-multiple-languages-plugin (~> 1.6.0)
-  jekyll-paginate (~> 1.1.0)
-  jekyll-seo-tag (~> 2.6.1)
-  jekyll-sitemap (~> 1.4.0)
-  jgd (~> 1.12)
+  jekyll-admin
+  jekyll-archives
+  jekyll-feed
+  jekyll-gist
+  jekyll-menus
+  jekyll-multiple-languages-plugin
+  jekyll-paginate
+  jekyll-seo-tag
+  jekyll-sitemap
+  jgd
   kramdown
   puma
   rack-jekyll
   rake
+  rouge
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (~> 0.1.1)

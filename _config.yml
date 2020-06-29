@@ -99,7 +99,6 @@ spotify_username: rapemu
 spotify_playlist: 1PbDnV1w31gf9blJcYxpWV
 
 #for comments ( we got Disqus and Hyvor Commenting, uncomment the one you want to use )
-
 # disqus_shortname: sujay-kundu
 hyvor_talk_website_id: null
 
@@ -112,6 +111,28 @@ mailchimp_form_url: https://sujaykundu.us10.list-manage.com/subscribe/post?u=50b
 # formspree (contact form)
 formspree_email: xwkrklev
 
+## Blog config
+# Authors
+authors:
+  sal:
+    name: Sal
+    display_name: Sal
+    gravatar: e56154546cf4be74e393c62d1ae9f9d4
+    email: wowthemesnet@gmail.com
+    web: https://www.wowthemes.net
+    twitter: https://twitter.com/wowthemesnet
+    description: "Author of Mediumish, a Bootstrap Medium styled template available for WordPress, HTML, Ghost and Jekyll. You are currently previewing Jekyll template demo."
+  john:
+    name: John
+    display_name: John    
+    avatar: 'assets/images/avatar.png'
+    gravatar: b1cc14991db7a456fcd761680bbc8f81
+    email: wowthemesnet@gmail.com
+    web: https://www.wowthemes.net
+    twitter: https://twitter.com/wowthemesnet
+    description: "This is the author box. Write a short description of the author here. You are currently previewing Mediumish demo, a Jekyll template compatible with Github pages."
+
+
 # syntax highlighter
 markdown: kramdown
 highlighter: rouge
@@ -119,6 +140,11 @@ permalink: pretty
 
 # google analytics
 google_analytics: UA-166953347-1
+
+# Adsense (change to "enabled" to activate, also your client id and ad slot. Create a new ad unit from your Adsense account to get the slot.)
+adsense: "disabled"
+adsense-data-ad-client: "ca-pub-3412143450191416"
+adsense-data-ad-slot: "1363087678"
 
 # Choose what to show ( can be true or false)
 show_author_work_experiences: true
@@ -187,7 +213,7 @@ plugins:
 # their entries' file path in the `include:` list.
 #
 exclude:
-  - .sass-cache/
+#  - .sass-cache/
   - .jekyll-cache/
   - gemfiles/
   - Gemfile

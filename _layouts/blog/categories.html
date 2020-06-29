@@ -1,6 +1,6 @@
 ---
 title: "Categories"
-layout: default
+layout: blog/default
 permalink: "/categories.html"
 ---
 
@@ -13,7 +13,7 @@ permalink: "/categories.html"
 {% for post in pages_list %}
 {% if post.title != null %}
 {% if group == null or group == post.group %}
-{% include postbox.html %}
+{% include blogpostbox.html %}
 {% endif %}
 {% endif %}
 {% endfor %}

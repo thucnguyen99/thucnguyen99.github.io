@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: blog/default
 disqus: false
 archive: false
 post_class: post-template
@@ -12,7 +12,7 @@ post_class: post-template
 
         <!-- Post Share -->
         <div class="col-md-2 pl-0">
-            {% include share.html %}
+            {% include blog/share.html %}
         </div>
 
         <!-- Post -->
@@ -45,7 +45,7 @@ post_class: post-template
 
             <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
             {% if site.adsense == "enabled" %}
-                {% include adsense-under-header.html %}
+                {% include blog/adsense-under-header.html %}
             {% endif %}
             <!-- End Adsense -->
 
@@ -70,7 +70,7 @@ post_class: post-template
                     {% endif %}
                     <div class="toc mt-4 mb-4 lead">
                         <h3 class="font-weight-bold">Summary</h3>
-                        {% include toc.html html=content %}
+                        {% include blog/toc.html html=content %}
                     </div>
                 {% endif %}
                 <!-- End Toc -->
@@ -80,7 +80,7 @@ post_class: post-template
             <!-- Rating -->
             {% if page.rating %}
             <div class="rating mb-4 d-flex align-items-center">
-                <strong class="mr-1">Rating:</strong> {% include star_rating.html %}
+                <strong class="mr-1">Rating:</strong> {% include blog/star_rating.html %}
             </div>
             {% endif %}
 
