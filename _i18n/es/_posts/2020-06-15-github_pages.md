@@ -8,6 +8,7 @@ category:
         - jekyll
         - github pages
 thumbnail: /assets/img/posts/ghpages.png
+image: /assets/img/posts/ghpages.png
 ---
 <blockquote>
 <p>Github Pages permite convertir cualquier repositorio en una página web con solo un par de clicks.</p>
