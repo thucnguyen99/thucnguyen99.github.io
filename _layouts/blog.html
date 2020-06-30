@@ -4,6 +4,56 @@ header: true
 footer: true
 ---
 
+<!-- ========== Featured ========== -->
+<section class="featured-posts">
+  <div class="section-title">
+      <h2><span>Featured</span></h2>
+  </div>
+  <div class="row">
+
+  {% for post in site.posts %}
+
+      {% if post.featured == true %}
+
+          {% include blog/featuredbox.html %}
+
+      {% endif %}
+
+  {% endfor %}
+
+  </div>
+</section>
+
+<!-- ========== Posts Index ========== -->
+<section class="recent-posts">
+
+    <div class="section-title">
+
+        <h2><span>All Stories</span></h2>
+
+    </div>
+
+    <div class="row listrecent">
+
+        {% for post in paginator.posts %}
+
+        {% include blog/postbox.html %}
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- ========== Pagination ========== -->
+<div class="bottompagination">
+  <div class="pointerup"><i class="fa fa-caret-up"></i></div>
+  <span class="navigation" role="navigation">
+      {% include blog/pagination.html %}
+  </span>
+</div>
+
+{% if false %}
 <div class="row" id="blog-posts-container">
   <div class="col-lg-8 offset-md-1">
           <ul>
@@ -64,3 +114,4 @@ footer: true
 {%- include blog_sidebar.html -%}
 
 </div>
+{% endif %}

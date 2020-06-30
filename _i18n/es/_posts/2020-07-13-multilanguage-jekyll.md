@@ -7,6 +7,7 @@ category:
         - jekyll
         - github pages
 thumbnail: /assets/img/posts/ghpages_jekyll_multilang.png
+image: /assets/img/posts/ghpages_jekyll_multilang.png
 ---
 En este post voy a explicar como añadir la funcionalidad de multi-idioma a tu plantilla de Jekyll usando [Github Pages](github_pages).
 Para añadir esta funcionalidad a nuestra web lo mejor es usar uno de los plugins que existen, pero Github no soporta todos los plugins, en este [enlace](jekyll_allowed_plugins) podeis encontrar los plugins soportados en Github. Por lo que puede que tengamos nuestra página funcionando en local pero luego cuando subamos nuestra página cause errores de compilación durante el proceso de build. Un modo de conseguir que nuestra página funcione es saltarnos ese proceso de build y subiendo nuestra página ya compilada a la rama `master` de nuestro proyecto, y mantener el control de versiones en otra rama a parte.

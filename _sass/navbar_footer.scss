@@ -4,6 +4,7 @@
 
 html[data-theme="dark"] {
     --main-background-color: rgb(28, 28, 30);
+    --nav-link-color: rgba(255, 255, 255, .5);
     --footer-background-color:#2D3033;
     --footer-text-color:#A39593;
 }
@@ -11,6 +12,7 @@ html[data-theme="dark"] {
 html,
 html[data-theme="light"] {
     --main-background-color: rgb(255, 255, 255);
+    --nav-link-color: #111111;
     --footer-background-color:#E6E6E6;
     --footer-text-color:#403B39;
 }
@@ -20,6 +22,7 @@ html[data-theme="light"] {
     html,
     html[data-theme="dark"] {
         --main-background-color: rgb(28, 28, 30);
+        --nav-link-color: rgba(255, 255, 255, .5);
         --footer-background-color:#2D3033;
         --footer-text-color:#A39593;
     }
@@ -27,6 +30,7 @@ html[data-theme="light"] {
     /* Light Mode */
     html[data-theme="light"] {
         --main-background-color: rgb(255, 255, 255);
+        --nav-link-color: #111111;
         --footer-background-color:#E6E6E6;
         --footer-text-color:#403B39;
     }
