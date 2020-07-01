@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="{{site.url}}{{site.baseurl_root }}/assets/css/error.css?v={{ site.time | date: '%Y%m%d%H%M%S' }}" />
 {% elsif page.title == "Blog" %}
 <link rel="stylesheet" href="{{site.url}}{{site.baseurl_root }}/assets/css/blog.css?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
+<!--<link rel="stylesheet" href="{{site.url}}{{site.baseurl_root }}/assets/css/blog/screen.css?v={{ site.time | date: '%Y%m%d%H%M%S' }}">-->
 {% else %}
 <link rel="stylesheet" href="{{site.url}}{{site.baseurl_root }}/assets/css/main.css?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
 {% endif %}
@@ -12,7 +13,7 @@
 
 {% if page.title == "About" %}
 <!-- FontAwesome stylesheed: rrss icons, only used in about page -->
-<link rel="stylesheet" href="{{site.url}}{{site.baseurl_root }}/assets/bower_components/font-awesome/web-fonts-with-css/css/fontawesome-all.min.css"/>
+<link rel="stylesheet" href="{{site.url}}{{site.baseurl_root }}/assets/bower_components/font-awesome/css/fontawesome-all.min.css"/>
 {% endif %}
 
 <!-- Favicon -->

@@ -3,9 +3,12 @@ Template Name: Mediumish
 Copyright: Sal, WowThemes.net, https://www.wowthemes.net 
 License: https://www.wowthemes.net/freebies-license/ 
 */
+
+
+
 @media screen and (min-width:1500px) {
     html { font-size:18px; } /* Increase the font size on higher resolutions */
-    .container {max-width:80%;}
+    .container {max-width:80% !important; }
 }
 .mainheading {
     padding: 1rem 0rem;
@@ -313,6 +316,7 @@ span.post-read-more a:hover {
     margin-bottom: 1rem;
 }
 
+/*
 .footer {
     border-top: 1px solid rgba(0, 0, 0, .05) !important;
     padding-top: 15px;
@@ -324,7 +328,7 @@ span.post-read-more a:hover {
     position: relative;
     background: #fff;
 }
-
+*/
 .link-dark {
     color: rgba(0, 0, 0, .8);
 }
@@ -453,11 +457,12 @@ blockquote {
     .listfeaturedtag .card-block {
         padding: 20px;
     }
-
+    /*
     .footer {
         margin-top: 0px;
         margin-bottom: 0px;
     }
+    */
 }
 
 @media (max-width:1024px) {
@@ -776,6 +781,8 @@ iframe {
         border-radius: 0;
         background-image: url(../images/jumbotron.jpg);
         background-size: cover;
+        background-position: center;
+        background-attachment: scroll;
     }
 
     .jumbotron.fortags .col-md-4 {
@@ -792,8 +799,10 @@ iframe {
     margin-top: 3rem;
     padding: 0;
     border-radius: 0;
-    background-image: url(../../img/jumbotron.jpg);
+    background-image: url(../images/jumbotron.jpg);
     background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
 }
 
 .jumbotron.fortags a {

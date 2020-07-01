@@ -4,53 +4,83 @@ header: true
 footer: true
 ---
 
-<!-- ========== Featured ========== -->
-<section class="featured-posts">
-  <div class="section-title">
-      <h2><span>Featured</span></h2>
-  </div>
-  <div class="row">
-
-  {% for post in site.posts %}
-
-      {% if post.featured == true %}
-
-          {% include blog/featuredbox.html %}
-
-      {% endif %}
-
-  {% endfor %}
-
-  </div>
-</section>
-
-<!-- ========== Posts Index ========== -->
-<section class="recent-posts">
-
-    <div class="section-title">
-
-        <h2><span>All Stories</span></h2>
-
+<!--
+<div class="row">
+  <div class="col-xl-12">
+-->
+<div class="container">
+    <!-- ========== Site Title ========== -->
+    <div class="mainheading">
+        <h1 class="sitetitle">{{ site.data.blog.name }}</h1>
+        <p class="lead">
+            {{ site.data.blog.description }}
+        </p>
     </div>
 
-    <div class="row listrecent">
-
-        {% for post in paginator.posts %}
-
-        {% include blog/postbox.html %}
-
+    <!-- ========== Featured ========== -->
+    <section class="featured-posts">
+      <div class="section-title">
+          <h2><span>Featured</span></h2>
+      </div>
+      <div class="row">
+        {% for post in site.posts %}
+            {% if post.featured == true %}
+                {% include featuredbox.html %}
+            {% endif %}
         {% endfor %}
+      </div>
+    </section>
 
+    <!-- ========== Posts Index ========== -->
+    <section class="recent-posts">
+      <div class="section-title">
+          <h2><span>All Stories</span></h2>
+      </div>
+
+      <div class="row listrecent">
+          {% for post in paginator.posts %}
+            {% include postbox.html %}
+          {% endfor %}
+      </div>
+    </section>
+
+    <!-- ========== Pagination ========== -->
+    <div class="bottompagination">
+      <div class="pointerup">
+        <i class="fa fa-caret-up"></i>
+      </div>
+      <span class="navigation" role="navigation">
+        {% include pagination.html %}
+      </span>
     </div>
+  </div>
+<!--
+  </div>
+</div>
+-->
 
-</section>
-
-<!-- ========== Pagination ========== -->
-<div class="bottompagination">
-  <div class="pointerup"><i class="fa fa-caret-up"></i></div>
-  <span class="navigation" role="navigation">
-      {% include blog/pagination.html %}
-  </span>
+<!-- ========== Categories Jumbotron ========== -->
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+      <div class="d-md-flex align-items-center justify-content-center h-100">
+          <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+      </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+      {% assign categories_list = site.categories %}
+      {% if categories_list.first[0] == null %}
+        {% for category in categories_list %}
+          <a class="mt-1 mb-1" href="{{site.baseurl}}/categories#{{ category | url_escape | strip | replace: ' ', '-' }}">{{ category | camelcase }} ({{ site.tags[category].size }})</a>
+        {% endfor %}
+      {% else %}
+        {% for category in categories_list %}
+          <a class="mt-1 mb-1" href="{{site.baseurl}}/categories#{{ category[0] | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }} ({{ category[1].size }})</a>
+        {% endfor %}
+      {% endif %}
+      {% assign categories_list = nil %}
+		</div>
+	</div>
 </div>
 
 {% if false %}

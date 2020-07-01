@@ -85,6 +85,11 @@ footer {
     padding: 20px;
     background-color: var(--footer-background-color);
     color: var(--footer-text-color);
+    border-top: 1px solid rgba(0, 0, 0, .05) !important;
+    //font-size: 0.8rem;
+    //margin-top: 50px;
+    //margin-bottom: 62px;
+    position: relative;
 }
 
 
@@ -131,6 +136,11 @@ footer {
         white-space: nowrap;
 
     }
+
+    .footer {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
 }
 
 /* Smartphones */
@@ -171,6 +181,11 @@ footer {
         margin-left: -30px;
 
     }
+
+    .footer {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
 }
 
 
@@ -202,6 +217,11 @@ footer {
     #topNav {
         padding-left:  0px;
         padding-right: 0px;
+    }
+
+    .footer {
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
 }
 
