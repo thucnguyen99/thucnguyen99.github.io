@@ -7,6 +7,7 @@ footer: true
 <div class="row ">
   <div class="col-lg-4 offset-md-1">
     <div class="card" id="profile-card">
+      <div class="card-body">
       <a href="/">
         <img src="{{ site.url }}{{site.baseurl_root}}/assets/img/{{ site.author_logo }}" class="profile-img" />
       </a>
@@ -74,18 +75,21 @@ footer: true
       <h6><i class="fas fa-link"></i> {{ site.author_website_url }}</h6>
       {% endif %}
     </div>
+    </div>
 
     <div class="card">
-      <h1>{% translate title_skills %}</h1>
-
-      {%- include author_skills.html -%}
+      <div class="card-body">
+        <h1 class="card-title">{% translate title_skills %}</h1>
+        {%- include author_skills.html -%}
+      </div>
     </div>
 
     {% if site.wakatime_username %}
     <div class="card">
-      <h1>{% translate title_coding %}</h1>
-
-      {%- include coding_activity.html -%}
+      <div class="card-body">
+        <h1 class="card-title">{% translate title_coding %}</h1>
+        {%- include coding_activity.html -%}
+      </div>
     </div>
     {% endif %}
   </div>
@@ -93,30 +97,34 @@ footer: true
   <div class="col-lg-7">
     {% if site.author_bio %}
       <div class="card">
-        <h1 class="card-title">{% translate title_bio %}</h1>
-        <p>{% translate author_bio %}</p>
+        <div class="card-body">
+          <h1 class="card-title">{% translate title_bio %}</h1>
+          <p>{% translate author_bio %}</p>
+        </div>
       </div>
     {% endif %}
 
     {% if site.show_author_project_details == true %}
     <div id="author_projects" class="card">
-      <h1 class="card-title">{% translate title_projects %}</h1>
-      <br />
-      {% for project in site.author_project_details %} {% if project.visibility == true %}
-      <div class="row" id="project-card">
-        <div class="col-md-6">
-          <img
-            src="{{site.url}}{{site.baseurl_root}}/assets/img/{{project.project_thumbnail}}"
-            class="project-img"
-          />
-        </div>
-        <div class="col-md-4 center">
-          {% assign translated_project_list = site.translations[site.lang]["author_project_details"] %}
-          {% assign translated_project = translated_project_list | find: "project_title", project.project_title %}
-          <h4 class="experience-title">{{ project.project_title }}</h4>
-          <h6 class="experience-info">{{ project.project_info}}</h6>
-          <p class="experience-desc">{{ project.project_description }}</p>
-          <p><a class="project-link" href="{{project.project_url}}">{{ project.project_url}}</a></p>
+      <div class="card-body">
+        <h1 class="card-title">{% translate title_projects %}</h1>
+        <br />
+        {% for project in site.author_project_details %} {% if project.visibility == true %}
+        <div class="row" id="project-card">
+          <div class="col-md-6">
+            <img
+              src="{{site.url}}{{site.baseurl_root}}/assets/img/{{project.project_thumbnail}}"
+              class="project-img"
+            />
+          </div>
+          <div class="col-md-4 center">
+            {% assign translated_project_list = site.translations[site.lang]["author_project_details"] %}
+            {% assign translated_project = translated_project_list | find: "project_title", project.project_title %}
+            <h4 class="experience-title">{{ project.project_title }}</h4>
+            <h6 class="experience-info">{{ project.project_info}}</h6>
+            <p class="experience-desc">{{ project.project_description }}</p>
+            <p><a class="project-link" href="{{project.project_url}}">{{ project.project_url}}</a></p>
+          </div>
         </div>
       </div>
       <br />
@@ -126,23 +134,25 @@ footer: true
     
     {% if site.show_author_work_experiences == true %}
     <div class="card">
-      <h1 class="card-title">{% translate title_work %}</h1>
-      <br />
-      {% for exp in site.author_work_experiences %} {% if exp.visibility == true %}
-      <div class="row">
-        <div class="col-md-2">
-          <img
-            src="{{site.url}}{{site.baseurl_root}}/assets/img/{{ exp.company_logo }}"
-            class="company-logo"
-          />
-        </div>
-        <div class="col-md-6">
-          {% assign translated_work_list = site.translations[site.lang]["author_work_experiences"] %}
-          {% assign translated_work = translated_work_list | find: "company_name", exp.company_name %}
-          <h4 class="experience-title">{{ translated_work.designation }}</h4>
-          <h6 class="experience-info">{{ exp.company_name}}</h6>
-          <p class="experience-desc">{{ translated_work.description }}</p>
-          <p><a href="{{exp.company_url}}">{{ exp.company_url}}</a></p>
+      <div class="card-body">
+        <h1 class="card-title">{% translate title_work %}</h1>
+        <br />
+        {% for exp in site.author_work_experiences %} {% if exp.visibility == true %}
+        <div class="row">
+          <div class="col-md-2">
+            <img
+              src="{{site.url}}{{site.baseurl_root}}/assets/img/{{ exp.company_logo }}"
+              class="company-logo"
+            />
+          </div>
+          <div class="col-md-6">
+            {% assign translated_work_list = site.translations[site.lang]["author_work_experiences"] %}
+            {% assign translated_work = translated_work_list | find: "company_name", exp.company_name %}
+            <h4 class="experience-title">{{ translated_work.designation }}</h4>
+            <h6 class="experience-info">{{ exp.company_name}}</h6>
+            <p class="experience-desc">{{ translated_work.description }}</p>
+            <p><a href="{{exp.company_url}}">{{ exp.company_url}}</a></p>
+          </div>
         </div>
       </div>
       {% endif %} {% endfor %}
@@ -151,23 +161,25 @@ footer: true
     
     {% if site.show_author_education_details == true %}
     <div class="card">
-      <h1 class="card-title">{% translate title_education %}</h1>
-      <br />
-      {% for detail in site.author_education_details %} {% if detail.visibility == true %}
-      <div class="row">
-        <div class="col-md-2">
-          <img
-            src="{{site.url}}{{site.baseurl_root}}/assets/img/{{ detail.college_logo}}"
-            class="company-logo"
-          />
-        </div>
-        <div class="col-md-6">
-          {% assign translated_college_list = site.translations[site.lang]["author_education_details"] %}
-          {% assign translated_college = translated_college_list | find: "college_name", detail.college_name %}
-          <h4 class="experience-title">{{ translated_college.college_degree }}</h4>
-          <h6 class="experience-info">{{ detail.college_name }}</h6>
-          <p class="experience-desc">{{ translated_college.description }}</p>
-          <p><a href="{{detail.college_url}}">{{ detail.college_url }}</a></p>
+      <div class="card-body">
+        <h1 class="card-title">{% translate title_education %}</h1>
+        <br />
+        {% for detail in site.author_education_details %} {% if detail.visibility == true %}
+        <div class="row">
+          <div class="col-md-2">
+            <img
+              src="{{site.url}}{{site.baseurl_root}}/assets/img/{{ detail.college_logo}}"
+              class="company-logo"
+            />
+          </div>
+          <div class="col-md-6">
+            {% assign translated_college_list = site.translations[site.lang]["author_education_details"] %}
+            {% assign translated_college = translated_college_list | find: "college_name", detail.college_name %}
+            <h4 class="experience-title">{{ translated_college.college_degree }}</h4>
+            <h6 class="experience-info">{{ detail.college_name }}</h6>
+            <p class="experience-desc">{{ translated_college.description }}</p>
+            <p><a href="{{detail.college_url}}">{{ detail.college_url }}</a></p>
+          </div>
         </div>
       </div>
       {% endif %} {% endfor %}
