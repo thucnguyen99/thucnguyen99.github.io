@@ -3,7 +3,7 @@ layout: post
 title:  "¡Crea tu web gratis con Github Pages!"
 summary: Cómo empezar con Github Pages, la forma más rápida, increible y gratis de crear tu blog o web.
 author: Raquel Peces
-date: '2020-06-08 14:35:23 +0530'
+date: '2020-08-08 14:35:23 +0530'
 category: 
         - jekyll
         - github pages
