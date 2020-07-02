@@ -11,8 +11,14 @@ post_class: post-template
 <!-- Begin Article
 ================================================== -->
 <div class="container">
-  <h1>{{ page }}</h1>
-  <h2>{{ layout }}</h2>
+  <!-- ========== Site Title ========== -->
+  <div class="mainheading">
+    <h1 class="sitetitle">{{ site.data.blog.name }}</h1>
+    <p class="lead">
+        {{ site.data.blog.description }}
+    </p>
+  </div>
+  
     <div class="row">
 
         <!-- Post Share -->
