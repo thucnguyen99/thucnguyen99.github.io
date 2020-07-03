@@ -6,6 +6,8 @@ description: >- # this means to ignore newlines until "baseurl:"
 url: "https://raquelfishes.github.io" # the base hostname & protocol for your site, e.g. https://example.github.io
 baseurl: "" # the subpath of your site, e.g. /blog
 
+include: ["_pages"]
+
 ### Multi-Language config
 #languages: ["es", "en"]
 languages: ["es"]
@@ -151,12 +153,12 @@ paginate_path: "/blog/page/:num/"
 #     envs: ['development']
 
 # Archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#   layout: archive
-#   permalinks:
-#     category: '/category/:name/'
+jekyll-archives:
+  enabled:
+    - categories
+  layout: archive
+  permalinks:
+    category: '/category/:name/'
 
 # Shop
 collections:
@@ -180,6 +182,7 @@ plugins:
   #- jekyll-algolia
   - jekyll-menus
   - jekyll-multiple-languages-plugin
+  - jekyll-archives
 
 
 # Exclude from processing.

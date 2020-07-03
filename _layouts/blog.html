@@ -38,6 +38,7 @@ footer: true
       </div>
 
       <div class="row listrecent">
+        <h1 class="raquelpost">{{ paginator  | jsonify | uri_escape }}</h1>
           {% for post in paginator.posts %}
             {% include postbox.html %}
           {% endfor %}
@@ -71,11 +72,11 @@ footer: true
       {% assign categories_list = site.categories %}
       {% if categories_list.first[0] == null %}
         {% for category in categories_list %}
-          <a class="mt-1 mb-1" href="{{site.baseurl}}/categories#{{ category | url_escape | strip | replace: ' ', '-' }}">{{ category | camelcase }} ({{ site.tags[category].size }})</a>
+          <a class="mt-1 mb-1" href="{{site.url}}{{site.baseurl}}/categories#{{ category | url_escape | strip | replace: ' ', '-' }}">{{ category | camelcase }} ({{ site.tags[category].size }})</a>
         {% endfor %}
       {% else %}
         {% for category in categories_list %}
-          <a class="mt-1 mb-1" href="{{site.baseurl}}/categories#{{ category[0] | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }} ({{ category[1].size }})</a>
+          <a class="mt-1 mb-1" href="{{site.url}}{{site.baseurl}}/categories#{{ category[0] | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }} ({{ category[1].size }})</a>
         {% endfor %}
       {% endif %}
       {% assign categories_list = nil %}
@@ -129,7 +130,7 @@ footer: true
             {% endif %}
           {% endfor %}
 
-          <li class="pagination-link"><a href="/blog/page/{{ paginator.total_pages }}/#/">Last</a></li>
+          <li class="pagination-link"><a href="/page/{{ paginator.total_pages }}/#/">Last</a></li>
 
           {% if paginator.next_page %}
             <li class="pagination-link"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&raquo;</a></li>
