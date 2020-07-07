@@ -1195,6 +1195,55 @@ ul.tags li a:hover {
     min-height: 300px;
 }
 
+/* Applause button */
+
+.sidebarapplause {
+    text-align: center;
+}
+
+applause-button {
+    width: 60px;
+    height: 60px;
+}
+
+/*
+applause-button {
+	height: 60px;
+    line-height: 60px;
+    width: 60px;
+    padding: 0;
+    font-size: 25px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+	display:inline-block;
+	position:relative;
+	background:none;
+	outline: 1px solid transparent;
+	border-radius: 50%;
+	border: 1px solid #d2d2d2;
+	text-align: center;
+	transition: border-color 0.3s ease-in;
+}
+applause-button:hover {
+	cursor: pointer;
+	border: 1px solid #27ae60;
+	transition: border-color 0.3s ease-in;
+}
+
+applause-button .count-container {
+	font-size: 13px;
+    position: relative;
+    margin-top: -113px;
+    margin-left: 0;
+    color: #bdc3c7;
+    display: block;
+    font-family: Tahoma;
+}
+applause-button .claps-button {
+	display:block;
+	margin-top:7px;
+}
+*/
 
 
 /* EXTRA MEDIA CSS */

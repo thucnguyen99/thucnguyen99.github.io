@@ -49,3 +49,9 @@ authors:
 # pagination of posts
 paginate: 6
 paginate_path: /page:num/
+
+# Google sheet connection for claps
+google_sheet_id: '1xG8rj7P_ARCJYIZnEtK0bu0O2xOZREtxhQ9AyWqGT4k'
+google_sheet_layout_page_number: '2'
+google_sheet_contents_page_number: '3'
+google_sheet_timestamp_page_number: '4'
