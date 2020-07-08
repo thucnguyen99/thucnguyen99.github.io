@@ -3,13 +3,19 @@
 const VERSION = "3.3.0";
 const API = "https://api.applause-button.com";
 
-const getClaps = (api, url) =>
+/*
+const getClaps = (api, url) => {
   // TODO: polyfill for IE (not edge)
   fetch(`${api}/get-claps` + (url ? `?url=${url}` : ""), {
     headers: {
       "Content-Type": "text/plain"
     }
   }).then(response => response.text());
+}
+*/
+const getClaps = new Promise(( response ) => {
+  response("25");
+});
 
 const updateClaps = (api, claps, url) =>
   // TODO: polyfill for IE (not edge)
@@ -23,7 +29,9 @@ const updateClaps = (api, claps, url) =>
 
 const arrayOfSize = size => new Array(size).fill(undefined);
 
-const formatClaps = claps => claps.toLocaleString("en");
+//const formatClaps = claps => claps.toLocaleString("en");
+
+const formatClaps = claps => nFormatter(claps, 2);
 
 // toggle a CSS class to re-trigger animations
 const toggleClass = (element, cls) => {
@@ -44,6 +52,49 @@ const debounce = (fn, delay) => {
     timer = setTimeout(() => fn.apply(context, args), delay);
   };
 };
+
+
+function nFormatter(num, digits) {
+  var si = [
+    { value: 1, symbol: "" },
+    { value: 1E3, symbol: "k" },
+    { value: 1E6, symbol: "M" },
+    { value: 1E9, symbol: "G" },
+    { value: 1E12, symbol: "T" },
+    { value: 1E15, symbol: "P" },
+    { value: 1E18, symbol: "E" }
+  ];
+  var rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+  var i;
+  for (i = si.length - 1; i > 0; i--) {
+    if (num >= si[i].value) {
+      break;
+    }
+  }
+  return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
+}
+
+
+function nUnformatter(strNum) {
+  var si = [
+    { value: 1, symbol: "" },
+    { value: 1E3, symbol: "k" },
+    { value: 1E6, symbol: "M" },
+    { value: 1E9, symbol: "G" },
+    { value: 1E12, symbol: "T" },
+    { value: 1E15, symbol: "P" },
+    { value: 1E18, symbol: "E" }
+  ];
+  var i;
+  for (i = si.length - 1; i > 0; i--) {
+    if (strNum.includes(si[i].symbol)) {
+      break;
+    }
+  }
+  var num = Number(strNum.replace(si[i].symbol, ""));
+  return (num * si[i].value);
+}
+
 
 // https://github.com/WebReflection/document-register-element#v1-caveat
 class HTMLCustomElement extends HTMLElement {
@@ -93,7 +144,7 @@ class ApplauseButton extends HTMLCustomElement {
 
     this._styleRootElement = this.querySelector(".style-root");
     this._countElement = this.querySelector(".count");
-    this._updateRootColor();
+    //this._updateRootColor();
     // the number of claps that this user has made - this is limited
     // by the MAX_MULTI_CLAP property, and whether multiclap is enabled
     this._totalClaps = 0;
@@ -111,8 +162,10 @@ class ApplauseButton extends HTMLCustomElement {
           this._bufferedClaps,
           MAX_MULTI_CLAP - this._totalClaps
         );
-        updateClaps(this.api, increment, this.url);
+        console.log( increment );
+        //updateClaps(this.api, increment, this.url);
         this._totalClaps += increment;
+        console.log( this._totalClaps );
         this._bufferedClaps = 0;
       }
     }, 2000);
@@ -129,7 +182,9 @@ class ApplauseButton extends HTMLCustomElement {
 
       // fire a DOM event with the updated count
       const clapCount =
-        Number(this._countElement.innerHTML.replace(",", "")) + 1;
+        //Number(this._countElement.innerHTML.replace(",", "")) + 1;
+        Number(nUnformatter(this._countElement.innerHTML));
+      console.log(clapCount);
       this.dispatchEvent(
         new CustomEvent("clapped", {
           bubbles: true,
@@ -148,7 +203,11 @@ class ApplauseButton extends HTMLCustomElement {
 
       // increment the clap count after a small pause (to allow the animation to run)
       setTimeout(() => {
-        this._countElement.innerHTML = formatClaps(clapCount);
+        console.log("pollitos");
+        console.log(clapCount);
+        console.log(this._totalClaps);
+        console.log(clapCount + this._totalClaps);
+        this._countElement.innerHTML = formatClaps(clapCount + 1);
       }, 250);
 
       // check whether we've exceeded the max claps
@@ -161,6 +220,17 @@ class ApplauseButton extends HTMLCustomElement {
       }
     });
 
+
+    getClaps.then((claps) => {
+      const clapCount = Number(claps);
+      console.log(clapCount);
+      initialClapCountResolve(clapCount);
+      if (clapCount > 0) {
+        this._countElement.innerHTML = formatClaps(clapCount + this._totalClaps);
+      }
+    });
+
+    /*
     getClaps(this.api, this.url).then(claps => {
       this.classList.remove("loading");
       const clapCount = Number(claps);
@@ -169,18 +239,19 @@ class ApplauseButton extends HTMLCustomElement {
         this._countElement.innerHTML = formatClaps(clapCount);
       }
     });
+    */
 
     this._connected = true;
   }
 
   get initialClapCount() {
-    return this._initialClapCount;
+    return 100;
   }
-
+/*
   get color() {
     return this.getAttribute("color");
   }
-
+*/
   set api(api) {
     if (api) {
       this.setAttribute("api", api);
@@ -192,7 +263,7 @@ class ApplauseButton extends HTMLCustomElement {
   get api() {
     return this.getAttribute("api") || API;
   }
-
+/*
   set color(color) {
     if (color) {
       this.setAttribute("color", color);
@@ -201,7 +272,7 @@ class ApplauseButton extends HTMLCustomElement {
     }
     this._updateRootColor();
   }
-
+*/
   set url(url) {
     if (url) {
       this.setAttribute("url", url);
@@ -227,6 +298,9 @@ class ApplauseButton extends HTMLCustomElement {
     }
   }
 
+  
+
+/*
   static get observedAttributes() {
     return ["color"];
   }
@@ -237,6 +311,7 @@ class ApplauseButton extends HTMLCustomElement {
 
   // propagates the color property to the various elements
   // that make up the applause button
+  
   _updateRootColor() {
     if (!this._styleRootElement) {
       return;
@@ -247,6 +322,7 @@ class ApplauseButton extends HTMLCustomElement {
     style.stroke = rootColor;
     style.color = rootColor;
   }
+  */
 }
 
 customElements.define("applause-button", ApplauseButton);

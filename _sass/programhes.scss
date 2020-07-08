@@ -1126,6 +1126,10 @@ section.recent-posts {
     fill: var( --transparent-text-color ) !important;
 }
 
+.sticky-top-offset{
+    top: 8rem !important;
+}
+
 span.post-name,
 span.post-date,
 span.author-meta {
@@ -1198,12 +1202,25 @@ ul.tags li a:hover {
 /* Applause button */
 
 .sidebarapplause {
-    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
 }
 
 applause-button {
     width: 60px;
     height: 60px;
+    color: red;
+    stroke: green;
+    fill: yellowgreen;
+}
+
+applause-button.clapped {
+    color: yellowgreen;
+    stroke: green;
+    fill: red;
 }
 
 /*
