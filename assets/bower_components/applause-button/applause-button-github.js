@@ -204,9 +204,6 @@ class ApplauseButton extends HTMLCustomElement {
       // increment the clap count after a small pause (to allow the animation to run)
       setTimeout(() => {
         console.log("pollitos");
-        console.log(clapCount);
-        console.log(this._totalClaps);
-        console.log(clapCount + this._totalClaps);
         this._countElement.innerHTML = formatClaps(clapCount + 1);
       }, 250);
 
