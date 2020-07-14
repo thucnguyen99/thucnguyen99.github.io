@@ -1,25 +1,41 @@
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
+
   {% if paginator.previous_page %}
-    <a class="ml-1 mr-1" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+    <a class="ml-1 mr-1 pagination-link" href="{{ permalink | append: '..' | prepend: site.baseurl }}">First</a>
   {% else %}
-    <span>&laquo; Prev</span>
+    <span>First</span>
+  {% endif %}
+  
+
+  {% if paginator.previous_page %}
+    <a class="ml-1 mr-1 pagination-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo;</a>
+  {% else %}
+    <span>&laquo;</span>
   {% endif %}
 
   {% for page in (1..paginator.total_pages) %}
     {% if page == paginator.page %}
-      <span class="ml-1 mr-1">{{ page }}</span>
+      <span class="ml-1 mr-1 ">{{ page }}</span>
     {% elsif page == 1 %}
-      <a class="ml-1 mr-1" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+      <a class="ml-1 mr-1 pagination-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
     {% else %}
-      <a class="ml-1 mr-1" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+      <a class="ml-1 mr-1 pagination-link" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
     {% endif %}
   {% endfor %}
 
   {% if paginator.next_page %}
-    <a class="ml-1 mr-1" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+    <a class="ml-1 mr-1 pagination-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&raquo;</a>
   {% else %}
-    <span>Next &raquo;</span>
+    <span>&raquo;</span>
   {% endif %}
+
+  {% if paginator.next_page %}
+    <a class="ml-1 mr-1 pagination-link" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', paginator.total_pages }}">Last</a>
+  {% else %}
+    <span>Last</span>
+  {% endif %}
+  
+
 </div>
 {% endif %}
