@@ -302,11 +302,11 @@ a{
     border-radius: .25rem;
     margin-left: 20px !important;
 }
-*/
 
 .pagination {
-    display: block;
+    display: block !important;
 }
+*/
 
 
 .bottompagination span.navigation {
@@ -321,6 +321,14 @@ a{
 
 .bottompagination span.navigation i {
     display: inline-block;
+}
+
+.bottompagination span.navigation a {
+    color: #999 !important;
+}
+
+.bottompagination span.navigation .active {
+    color: #111;
 }
 
 .pointerup {

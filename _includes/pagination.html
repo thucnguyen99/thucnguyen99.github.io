@@ -1,41 +1,37 @@
 {% if paginator.total_pages > 1 %}
-<div class="pagination">
-
   {% if paginator.previous_page %}
-    <a class="ml-1 mr-1 pagination-link" href="{{ permalink | append: '..' | prepend: site.baseurl }}">First</a>
+    <span class="ml-1 mr-1"><a href="{{site.url}}{{site.baseurl_root}}/blog">First</a></span>
   {% else %}
-    <span>First</span>
+    <span class="ml-1 mr-1">First</span>
   {% endif %}
   
 
   {% if paginator.previous_page %}
-    <a class="ml-1 mr-1 pagination-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo;</a>
+    <span class="ml-1 mr-1"><a href="{{ paginator.previous_page_path | prepend: site.baseurl_root | replace: '//', '/' }}">&laquo;</a></span>
   {% else %}
-    <span>&laquo;</span>
+    <span class="ml-1 mr-1">&laquo;</span>
   {% endif %}
 
   {% for page in (1..paginator.total_pages) %}
     {% if page == paginator.page %}
-      <span class="ml-1 mr-1 ">{{ page }}</span>
+      <span class="ml-1 mr-1 active">{{ page }}</span>
     {% elsif page == 1 %}
-      <a class="ml-1 mr-1 pagination-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+      <span class="ml-1 mr-1"><a href="{{ paginator.previous_page_path | prepend: site.baseurl_root | replace: '//', '/' }}">{{ page }}</a></span>
     {% else %}
-      <a class="ml-1 mr-1 pagination-link" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+      <span class="ml-1 mr-1"><a href="{{  site.paginate_path | prepend: site.baseurl_root | replace: '//', '/' }}">{{ page }}</a></span>
     {% endif %}
   {% endfor %}
 
   {% if paginator.next_page %}
-    <a class="ml-1 mr-1 pagination-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&raquo;</a>
+    <span class="ml-1 mr-1"><a href="{{ paginator.next_page_path | prepend: site.baseurl_root | replace: '//', '/' }}">&raquo;</a></span>
   {% else %}
-    <span>&raquo;</span>
+    <span class="ml-1 mr-1">&raquo;</span>
   {% endif %}
 
   {% if paginator.next_page %}
-    <a class="ml-1 mr-1 pagination-link" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', paginator.total_pages }}">Last</a>
+    <span class="ml-1 mr-1"><a href="{{ site.paginate_path | prepend: site.baseurl_root | replace: '//', '/' | replace: ':num', paginator.total_pages }}">Last</a></span>
   {% else %}
-    <span>Last</span>
+    <span class="ml-1 mr-1">Last</span>
   {% endif %}
   
-
-</div>
 {% endif %}
