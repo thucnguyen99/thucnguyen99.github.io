@@ -120,3 +120,23 @@ You can contact me, if you need any help via [Email](mailto:sujaykundu777@gmail.
 The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT). You can do anything you want, including projects for your clients, as long as you mention an attribution back (credit links in footer). See the [Licence](https://github.com/sujaykundu777/devlopr-jekyll/blob/master/LICENSE) file
 
 I understand that sometimes footer links or any links to external websites are not convenient, so you have the option to remove credits/footer links by becoming a [Backer](https://opencollective.com/devlopr-jekyll#backer).
+
+
+
+
+
+
+
+
+## Style Palette
+
+#### Dark
+
+## Syntax Palette
+
+| Scope                     | Color                                              | HEX     | RGB                |
+| ------------------------- | -------------------------------------------------- | ------- | ------------------ |
+| Main Background           | ![#131421](https://placehold.it/35/131421/?text=+) | #131421 | rgb(19, 20, 33)    |
+| Head & Footer Background  | ![#191A2A](https://placehold.it/35/191A2A/?text=+) | #191A2A | rgb(25, 26, 42)    |
+| Card Background           | ![#1E2030](https://placehold.it/35/1E2030/?text=+) | #1E2030 | rgb(30, 32, 48)    |
+| Bold Color                | ![#D0C7ED](https://placehold.it/35/D0C7ED/?text=+) | #D0C7ED | rgb(208, 199, 237) |

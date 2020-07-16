@@ -3,15 +3,15 @@
 
 
 html[data-theme="dark"] {
-    --main-background-color: rgb(28, 28, 30);
+    --header-background-color: #191A2A;
     --nav-link-color: rgba(255, 255, 255, .5);
-    --footer-background-color:#2D3033;
+    --footer-background-color:#191A2A;
     --footer-text-color:#A39593;
 }
 
 html,
 html[data-theme="light"] {
-    --main-background-color: rgb(255, 255, 255);
+    --header-background-color: rgb(255, 255, 255);
     --nav-link-color: #111111;
     --footer-background-color:#E6E6E6;
     --footer-text-color:#403B39;
@@ -21,15 +21,15 @@ html[data-theme="light"] {
      /* Dark Mode */
     html,
     html[data-theme="dark"] {
-        --main-background-color: rgb(28, 28, 30);
+        --header-background-color: #191A2A;
         --nav-link-color: rgba(255, 255, 255, .5);
-        --footer-background-color:#2D3033;
+        --footer-background-color:#191A2A;
         --footer-text-color:#A39593;
     }
 
     /* Light Mode */
     html[data-theme="light"] {
-        --main-background-color: rgb(255, 255, 255);
+        --header-background-color: rgb(255, 255, 255);
         --nav-link-color: #111111;
         --footer-background-color:#E6E6E6;
         --footer-text-color:#403B39;
@@ -41,7 +41,7 @@ html[data-theme="light"] {
 
 /* Navigation Header */
 header {
-    background-color: var(--main-background-color);
+    background-color: var(--header-background-color);
     box-shadow:0px;
     height: auto;
     width: 100%;
@@ -52,7 +52,7 @@ header {
 #topNav{
     padding-left: 100px;
     padding-right: 100px;
-    background-color: var(--main-background-color) !important;
+    background-color: var(--header-background-color) !important;
     box-shadow: #000 0px 0px 8px;
 }
 
@@ -104,7 +104,7 @@ footer {
     header {
         height: auto;
         text-align: center;
-        background-color: var(--main-background-color);
+        background-color: var(--header-background-color);
         box-shadow:0px;
         height: auto;
         width: 100%;
@@ -148,7 +148,7 @@ footer {
     header {
         height: auto;
         text-align: center;
-        background-color: var(--main-background-color);
+        background-color: var(--header-background-color);
         box-shadow:0px;
         height: auto;
         width: 100%;
@@ -198,7 +198,7 @@ footer {
 
     /*Header Navigation */
     header {
-        background-color: var(--main-background-color);
+        background-color: var(--header-background-color);
         box-shadow:0px;
         height: auto;
         width: 100%;
